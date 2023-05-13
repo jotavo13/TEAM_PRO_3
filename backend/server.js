@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const methodOverride = require('method-override');
 const app = express();
 const mongoose = require('mongoose');
+const { DATABASE_URL, PORT } = require('./config');
 
 
 
@@ -29,7 +30,7 @@ app.get('/', (req, res) => {
 //------------------------------------------
 mongoose.connect(DATABASE_URL).then(() => {
     app.listen(PORT, () => {
-      console.log(`Your app is listening on port ${PORT}`);
+      console.log(`Your app is listening on PORT ${PORT}`);
     });
   });
   
