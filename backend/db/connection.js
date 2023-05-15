@@ -1,8 +1,6 @@
-
 // import mongoose
 const mongoose = require('mongoose');
 const { DATABASE_URL } = require('../config');
-require("dotenv").config();
 
 // mongoose connect to url
 mongoose.connect(DATABASE_URL);
