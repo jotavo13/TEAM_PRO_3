@@ -1,4 +1,4 @@
-const DATABASE_URL = 'mongodb+srv://project:4KjGdOWhaAQWN520@cluster0.qs3kxed.mongodb.net/exercisesDB?retryWrites=true&w=majority';
+const DATABASE_URL = 'mongodb+srv://project:4KjGdOWhaAQWN520@cluster0.qs3kxed.mongodb.net/MytubeDB?retryWrites=true&w=majority';
 
 const PORT = process.env.PORT || 3000;
 

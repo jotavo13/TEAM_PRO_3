@@ -3,11 +3,14 @@ const express = require('express');
 const morgan = require('morgan'); 
 const methodOverride = require('method-override');
 const app = express();
-const { PORT } = require('./config');
+const { PORT, DATABASE_URL} = require('./config');
 const router = express.Router();
 const Videos = require('./models/videos');
 const cors = require("cors");
 const User = require('./models/user');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const bcrypt = require('bcryptjs')
 
 
 /////////////////////////////////////////////////////
@@ -20,6 +23,20 @@ app.use(morgan("tiny")) //logging//
 app.use(methodOverride("_method")) // override for put and delete requests from forms
 app.use(express.urlencoded({extended: false})) // parse urlencoded request bodies
 app.use(express.static("public")) // serve files from public statically
+
+app.use(
+  session({
+      store: MongoStore.create({ 
+          mongoUrl: DATABASE_URL
+      }),
+      secret: "pineapple",
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+          maxAge: 1000 * 60 * 60 * 24 * 7 
+      }
+  }),
+)
 
 
 // Routes
@@ -76,6 +93,32 @@ app.post('/', async (req, res) => {
   console.log(req.body)
   // create and send to mongo
   res.json(await User.create(req.body))
+ })
+
+ app.get("/auth/login", (req, res)=>{
+  res.send("hello login page")
+ });
+
+ app.post("/auth/login", async (req, res)=>{
+  const user = await User.findOne({username: req.body.username})
+  console.log(user);
+  if (user){
+    const result = await bcrypt.compare(req.body.password, user.password);
+    console.log(result);
+      if (result){
+        req.session.currentUser = {
+          username: user.username,
+          id: user._id
+        }
+        console.log("password matched");
+        res.json(req.session.currentUser)
+      }
+      else{
+        console.log("invalid")
+        res.json("Invalid credentials")
+      }
+  }
+
  })
 
 // Listener
