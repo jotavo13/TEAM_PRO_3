@@ -4,17 +4,23 @@ const morgan = require('morgan');
 const methodOverride = require('method-override');
 const app = express();
 const { PORT } = require('./config');
-
+const router = express.Router();
 const Videos = require('./models/videos');
+const cors = require("cors");
+const User = require('./models/user');
 
 
 /////////////////////////////////////////////////////
 // Middleware  req => middleware => res
 /////////////////////////////////////////////////////
+
+app.use(cors());
+app.use(express.json())
 app.use(morgan("tiny")) //logging// 
 app.use(methodOverride("_method")) // override for put and delete requests from forms
 app.use(express.urlencoded({extended: false})) // parse urlencoded request bodies
 app.use(express.static("public")) // serve files from public statically
+
 
 // Routes
 
@@ -60,6 +66,17 @@ app.post('/', async (req, res) => {
   res.redirect('/');
 })
 
+
+//------------Auth Routes
+ app.get("/auth/signup", (req, res)=>{
+  res.send("hello signup page")
+ });
+
+ app.post("/auth/signup", async (req, res)=>{
+  console.log(req.body)
+  // create and send to mongo
+  res.json(await User.create(req.body))
+ })
 
 // Listener
 
