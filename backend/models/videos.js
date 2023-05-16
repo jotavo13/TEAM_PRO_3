@@ -1,7 +1,33 @@
 const { mongoose } = require('../db/connection');
 
 const videosSchema = new mongoose.Schema({
-    name: String
+    title:  {
+        type: String,
+        required: true
+    },
+    thumbnail: {
+        type: String,
+        required: true
+    },
+    channelThumbnail: {
+        type: String,
+        required: true
+    },
+    channelTitle: {
+        type: String,
+        required: true
+    },
+    publishTime: {
+        type: String,
+        required: true
+    },
+    views: {
+        type: Number,
+        required: true
+    },
+    categories: {
+        type: [String]
+    }
 })
 
 const Videos = mongoose.model('Videos', videosSchema);
