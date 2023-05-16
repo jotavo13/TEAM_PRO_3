@@ -4,6 +4,7 @@ import Videos from './pages/Videos';
 import NewVideo from './pages/NewVideo';
 import UpdateVideo from './pages/UpdateVideo';
 import Navbar from './components/Navbar';
+import Signup from './pages/Signup'
 
 function App() {
 
@@ -18,6 +19,8 @@ function App() {
       <Routes>
 
         <Route exact={true} path='/' element={<Videos />} />
+
+        <Route path="/auth/signup" element={<Signup/>}/>
 
         <Route path='/new' element={<NewVideo />} />
 
