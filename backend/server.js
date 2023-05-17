@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const methodOverride = require('method-override');
 const app = express();
 const { PORT } = require('./config');
+const cors = require('cors');
 
 const Videos = require('./models/videos');
 
@@ -15,15 +16,14 @@ app.use(morgan("tiny")) //logging//
 app.use(methodOverride("_method")) // override for put and delete requests from forms
 app.use(express.json()) // parse urlencoded request bodies
 app.use(express.static("public")) // serve files from public statically
+app.use(cors()); // allows the frontend to post data to the backend
 
 // Routes
 
 app.get('/', async (req, res) => {
 
-
-
-  // const videos = await Videos.find({});
-  // res.json(results);
+  const videos = await Videos.find({});
+  res.json(videos);
 })
 
 app.post('/', async (req, res) => {
