@@ -100,11 +100,12 @@ app.post('/', async (req, res) => {
  });
 
  app.post("/auth/login", async (req, res)=>{
+  console.log("req.body.username:", req.body.username)
   const user = await User.findOne({username: req.body.username})
   console.log(user);
   if (user){
     const result = await bcrypt.compare(req.body.password, user.password);
-    console.log(result);
+    console.log("result", result);
       if (result){
         req.session.currentUser = {
           username: user.username,
@@ -117,6 +118,10 @@ app.post('/', async (req, res) => {
         console.log("invalid")
         res.json("Invalid credentials")
       }
+  }
+  else{
+    console.log("user does not exist")
+    res.json("user not found")
   }
 
  })

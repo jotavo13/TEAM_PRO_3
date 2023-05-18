@@ -1,52 +1,54 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
-function Login(props) {
-    const [usernameState, setUsernameState] = useState("");
-    const [passwordState, setPasswordState] = useState("");
+function Login({loggedInState, onSubmitHandler, onChangeHandler, usernameState, passwordState, setUsernameState, setPasswordState, setLoggedInState}) {
+    // const [usernameState, setUsernameState] = useState("");
+    // const [passwordState, setPasswordState] = useState("");
 
-    const onChangeHandler = (e, setValue)=>{
-        // console.log(e.target.value);
-        setValue(e.target.value)
-    };
+    // const onChangeHandler = (e, setValue)=>{
+    //     // console.log(e.target.value);
+    //     setValue(e.target.value)
+    // };
 
-    const onSubmithandler = async () => {
-        const username = usernameState;
-        const password = passwordState;
-
-        let userAttempt = {
-            username: username,
-            password: password
+    let storedUser;
+    useEffect(()=>{
+        storedUser = window.localStorage.getItem("user");
+         if(storedUser){
+        console.log("localy stored user",storedUser)
+        let localUser={
+            username: storedUser.username,
+            id: storedUser.id
         }
-        let userExists;
-
-        const options = {
-			method: "POST", 
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify(userAttempt)
-		}       
-        
-        const responseData = await fetch("http://localhost:3000/auth/login", options)
-
-        try {
-            
-        } catch (error) {
-            
-        }
+        setLoggedInState(localUser)
     }
+    }, [])
 
+    // if(storedUser){
+    //     console.log("localy stored user",storedUser)
+    //     let localUser={
+    //         username: storedUser.username,
+    //         id: storedUser.id
+    //     }
+    //     setLoggedInState(localUser)
+    // }
+
+    if (loggedInState){
+        // {console.log("login state true")}
+        return <h1>You are logged in as {}</h1>
+    }else{
     return (
         <div>
+            {/* {console.log("user", loggedinState)} */}
             Login Here
-            <form onSubmit={onSubmithandler}>
+
+            <form onSubmit={onSubmitHandler}>
                  <input type="email" placeholder="email" name="username" value={usernameState} onChange={(e)=> onChangeHandler(e, setUsernameState)}/>
                  <input type="password" placeholder="password" name="password" value={passwordState} onChange={(e)=> onChangeHandler(e, setPasswordState)}/>
                 <input type="submit" value="Login"/>
              </form>
         </div>
     );
+}
 }
 
 export default Login;
