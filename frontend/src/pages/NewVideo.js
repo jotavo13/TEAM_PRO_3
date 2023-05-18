@@ -65,6 +65,8 @@ function NewVideo() {
 		const response2 = await fetch(url2, options);
 		const channelResults = await response2.json();
 
+		console.log(videoResults, channelResults)
+
 		let videoObject = {
 				title:  finalVideoState.snippet.title,
 				thumbnail: finalVideoState.snippet.thumbnails.default.url,
@@ -72,6 +74,7 @@ function NewVideo() {
 				channelTitle: finalVideoState.snippet.channelTitle,
 				publishTime: finalVideoState.snippet.publishTime,
 				views: videoResults.items[0].statistics.viewCount,
+				videoURL: `https://www.youtube.com/watch?v=${finalVideoState.id.videoId}`,
 				categories: []
 		}
 		
@@ -96,11 +99,12 @@ function NewVideo() {
 	if(videoState === ''){
 		return (
 			<div className="newvideo">
-				Hello
+				{/* hopefully we can eventually turn the search bar into a component so we have DRY code */}
 				<form onSubmit={onSubmitHandler}>
 					<input type="text" name="searchBar" value={searchBarState} placeholder="Search" onChange={(e) => onChangeHandler(e, setSearchBarState)}/> 
 					<input type="submit" value="Search" />
 				</form>
+				Hello
 			</div>
 		)
 	}

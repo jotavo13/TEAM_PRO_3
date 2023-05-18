@@ -25,6 +25,10 @@ const videosSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    videoURL: {
+        type: String,
+        required: true
+    },
     categories: {
         type: [String]
     }
