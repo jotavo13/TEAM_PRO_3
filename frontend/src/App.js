@@ -22,7 +22,7 @@ function App() {
       setUser(JSON.parse(locallyStorredUser))
     }
 
-  }, []) 
+  }, [])
 
 
 //----- loggedInState-------------
