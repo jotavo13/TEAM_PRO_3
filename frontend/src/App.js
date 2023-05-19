@@ -7,7 +7,7 @@ import Navbar from './components/Navbar';
 import Signup from './pages/Signup'
 import Login from './pages/Login'
 import { useEffect, useState } from 'react';
-import Signup from './pages/Signup'
+
 
 function App() {
 
@@ -54,9 +54,11 @@ const onSubmithandler = async (e) => {
   }   
   const responseData = await fetch("http://localhost:4000/auth/login", options)
   const loggedInUser = await responseData.json()
-  setLoggedInState(loggedInUser);
+  console.log("logged in:", loggedInUser)
+  // setLoggedInState(true);
+  console.log(loggedInState);
   // store loged in user in the browser so that component rendering does not reset it, 
-  window.localStorage.setItem("user", JSON.stringify(loggedInUser));
+  localStorage.setItem("user", JSON.stringify(loggedInUser));
   console.log("logged In User", loggedInUser);
   console.log("end submit handler")
 

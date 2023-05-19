@@ -11,8 +11,6 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const bcrypt = require('bcryptjs');
 const Videos = require('./models/videos');
-const cors = require("cors");
-const User = require('./models/user');
 
 
 /////////////////////////////////////////////////////
@@ -25,7 +23,6 @@ app.use(morgan("tiny")) //logging//
 app.use(methodOverride("_method")) // override for put and delete requests from forms
 app.use(express.json()) // parse json data into the req.body
 app.use(express.static("public")) // serve files from public statically
-app.use(cors()); // allows the frontend to post data to the backend and vice versa (probably)
 
 //session
 app.use(

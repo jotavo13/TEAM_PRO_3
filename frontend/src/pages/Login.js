@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 function Login({loggedInState, onSubmitHandler, onChangeHandler, usernameState, passwordState, setUsernameState, setPasswordState, setLoggedInState}) {
@@ -10,16 +10,23 @@ function Login({loggedInState, onSubmitHandler, onChangeHandler, usernameState, 
     //     setValue(e.target.value)
     // };
 
-    let storedUser;
+    const [storedUser, setStoredUser] = useState(null);
     useEffect(()=>{
-        storedUser = window.localStorage.getItem("user");
-         if(storedUser){
-        console.log("localy stored user",storedUser)
-        let localUser={
-            username: storedUser.username,
-            id: storedUser.id
-        }
-        setLoggedInState(localUser)
+        // storedUser = window.localStorage.getItem("user");
+        const localStoredUser = localStorage.getItem('user');
+        console.log(localStoredUser)
+         if(localStoredUser){
+            let parsedUser = JSON.parse(localStoredUser)
+            console.log("parsed", parsedUser)
+            setStoredUser(parsedUser)
+        console.log("localy stored user is", localStoredUser)
+        // let localUser={
+        //     username: storedUser.username,
+        //     id: storedUser.id
+        // }
+        setLoggedInState(true)
+        console.log(setLoggedInState)
+
     }
     }, [])
 
@@ -32,9 +39,17 @@ function Login({loggedInState, onSubmitHandler, onChangeHandler, usernameState, 
     //     setLoggedInState(localUser)
     // }
 
-    if (loggedInState){
+    if (loggedInState && storedUser){
+        // let currentUser = JSON.parse(storedUser)
+        // console.log(currentUser)
+        console.log(storedUser)
         // {console.log("login state true")}
-        return <h1>You are logged in as {}</h1>
+        return (
+            <>
+        <h1>You are logged in as {storedUser.username}</h1>
+            <button>Logout</button>
+            </>
+        )
     }else{
     return (
         <div>
