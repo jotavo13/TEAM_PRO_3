@@ -8,6 +8,7 @@ import Signup from './pages/Signup'
 import Login from './pages/Login'
 import { useEffect, useState } from 'react';
 
+
 function App() {
 
   const [user, setUser] = useState(null);
@@ -53,9 +54,11 @@ const onSubmithandler = async (e) => {
   }   
   const responseData = await fetch("http://localhost:4000/auth/login", options)
   const loggedInUser = await responseData.json()
-  setLoggedInState(loggedInUser);
+  console.log("logged in:", loggedInUser)
+  // setLoggedInState(true);
+  console.log(loggedInState);
   // store loged in user in the browser so that component rendering does not reset it, 
-  window.localStorage.setItem("user", JSON.stringify(loggedInUser));
+  localStorage.setItem("user", JSON.stringify(loggedInUser));
   console.log("logged In User", loggedInUser);
   console.log("end submit handler")
 
@@ -74,6 +77,8 @@ const onSubmithandler = async (e) => {
       <Routes>
 
         <Route exact={true} path='/' element={<Videos />} />
+
+        <Route path="/auth/signup" element={<Signup/>}/>
 
         <Route path='/new' element={<NewVideo />} />
 

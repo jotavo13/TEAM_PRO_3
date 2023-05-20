@@ -3,24 +3,26 @@ const express = require('express');
 const morgan = require('morgan'); 
 const methodOverride = require('method-override');
 const app = express();
+const router = express.Router();
 const { PORT, DATABASE_URL } = require('./config');
 const cors = require('cors');
 const User = require('./models/User');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const bcrypt = require('bcryptjs');
-
 const Videos = require('./models/videos');
 
 
 /////////////////////////////////////////////////////
 // Middleware  req => middleware => res
 /////////////////////////////////////////////////////
+
+app.use(cors());
+app.use(express.json())
 app.use(morgan("tiny")) //logging// 
 app.use(methodOverride("_method")) // override for put and delete requests from forms
 app.use(express.json()) // parse json data into the req.body
 app.use(express.static("public")) // serve files from public statically
-app.use(cors()); // allows the frontend to post data to the backend and vice versa (probably)
 
 //session
 app.use(
@@ -36,6 +38,7 @@ app.use(
       }
   }),
 )
+
 
 
 // Routes
@@ -102,6 +105,17 @@ app.get("/auth/signup", (req, res)=>{
 
  })
 
+
+//------------Auth Routes
+ app.get("/auth/signup", (req, res)=>{
+  res.send("hello signup page")
+ });
+
+ app.post("/auth/signup", async (req, res)=>{
+  console.log(req.body)
+  // create and send to mongo
+  res.json(await User.create(req.body))
+ })
 
 // Listener
 
