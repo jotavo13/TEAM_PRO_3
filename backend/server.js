@@ -95,12 +95,12 @@ app.get("/auth/signup", (req, res)=>{
       }
       else{
         console.log("invalid")
-        res.json("Invalid credentials")
+        // res.json("Invalid credentials")
       }
   }
   else{
     console.log("user does not exist")
-    res.json("user not found")
+    res.json(null)
   }
 
  })

@@ -1,21 +1,30 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function AccountInfo() {
-    
+
+function AccountInfo({loggedInState, setLoggedInState}) {
+    console.log("logged in state: ",loggedInState)
     const Navigate = useNavigate();
 
         const logout = ()=>{
-            console.log("logout button pressed")
             localStorage.removeItem("user");
-            Navigate("/")
+            setLoggedInState(false);
+            Navigate("/auth/login")
+         
         }
 
-    return(
-        <>
-        <button>Login</button>
-        <button onClick={logout}>Logout</button>
-        </>
-    )
+        const loginButton = ()=>{
+            Navigate("/auth/login")
+        }
+
+        if (!loggedInState) {
+             return(  <button onClick={loginButton}>Login</button>)
+        }
+       
+        if(loggedInState){
+
+            return(<button onClick={logout}>Logout</button>)
+        }
 }
 
 
