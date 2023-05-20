@@ -47,7 +47,6 @@ function Login({loggedInState, onSubmitHandler, onChangeHandler, usernameState, 
         return (
             <>
         <h1>You are logged in as {storedUser.username}</h1>
-            <button>Logout</button>
             </>
         )
     }else{

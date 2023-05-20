@@ -9,7 +9,7 @@ function Video({video}) {
 
 	console.log(video)
     return (
-		<NavLink to={video.videoURL}>
+		<NavLink to={video.videoURL} target="_">
 			<div className="video">
 				<img src={video.thumbnail} alt='' />
 				<img src={video.channelThumbnail} alt='' />

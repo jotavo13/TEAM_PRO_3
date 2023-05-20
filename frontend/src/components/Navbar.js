@@ -1,6 +1,9 @@
 import React from 'react'
 import './Navbar.css'
 import { NavLink } from 'react-router-dom';
+import AccountInfo from './AccountInfo';
+
+
 		  
 function Navbar() {
     return (
@@ -11,6 +14,7 @@ function Navbar() {
 			<NavLink to={'/new'}>
 				<button>Add Video</button>
 			</NavLink>
+			<AccountInfo />
 		</div>
 	)
 }
