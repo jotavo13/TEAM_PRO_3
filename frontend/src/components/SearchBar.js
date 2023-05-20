@@ -1,9 +1,9 @@
 import { React, useState, useEffect } from 'react'
 import './SearchBar.css'
 		  
-function SearchBar() {
+function SearchBar({onChangeHandler, onSearchSubmitHandler, setSearchBarState, searchBarState}) {
 
-	const [searchState, setSearchState] = useState(null);
+	// const [searchBarState, setSearchBarState] = useState(null);
 
 	useEffect(() => {
 		
@@ -11,10 +11,10 @@ function SearchBar() {
 
     return (
 		<div className="searchbar">
-			<form>
-				<input type="text"></input>
-				<input type="submit"></input>
-			</form>
+			<form onSubmit={onSearchSubmitHandler}>
+					<input type="text" name="searchBar" value={searchBarState} placeholder="Search" onChange={(e) => onChangeHandler(e, setSearchBarState)}/> 
+					<input type="submit" value="Search" />
+				</form>
 		</div>
 	)
 }

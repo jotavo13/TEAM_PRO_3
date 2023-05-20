@@ -2,11 +2,11 @@ import { React, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import './NewVideo.css'
 		  
-function NewVideo() {
+function NewVideo({videoState, setVideoState}) {
 
 	const navigate = useNavigate();
 
-	const [videoState, setVideoState] = useState('');
+	// const [videoState, setVideoState] = useState('');
 	const [searchBarState, setSearchBarState] = useState('');
 	const [finalVideoState, setFinalVideoState] = useState('');
 

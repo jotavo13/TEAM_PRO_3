@@ -20,24 +20,12 @@ function Login({loggedInState, onSubmitHandler, onChangeHandler, usernameState, 
             console.log("parsed", parsedUser)
             setStoredUser(parsedUser)
         console.log("localy stored user is", localStoredUser)
-        // let localUser={
-        //     username: storedUser.username,
-        //     id: storedUser.id
-        // }
         setLoggedInState(true)
         console.log(setLoggedInState)
 
     }
     }, [])
 
-    // if(storedUser){
-    //     console.log("localy stored user",storedUser)
-    //     let localUser={
-    //         username: storedUser.username,
-    //         id: storedUser.id
-    //     }
-    //     setLoggedInState(localUser)
-    // }
 
     if (loggedInState && storedUser){
         // let currentUser = JSON.parse(storedUser)
@@ -58,7 +46,8 @@ function Login({loggedInState, onSubmitHandler, onChangeHandler, usernameState, 
             <form onSubmit={onSubmitHandler}>
                  <input type="email" placeholder="email" name="username" value={usernameState} onChange={(e)=> onChangeHandler(e, setUsernameState)}/>
                  <input type="password" placeholder="password" name="password" value={passwordState} onChange={(e)=> onChangeHandler(e, setPasswordState)}/>
-                <input type="submit" value="Login"/>
+                <input type="submit" value="Submit
+                "/>
              </form>
         </div>
     );

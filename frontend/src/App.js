@@ -1,17 +1,21 @@
 import './App.css';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate, Route, Routes } from 'react-router-dom';
 import Videos from './pages/Videos';
 import NewVideo from './pages/NewVideo';
 import UpdateVideo from './pages/UpdateVideo';
-import Navbar from './components/Navbar';
+import TopBar from './components/TopBar';
 import Signup from './pages/Signup'
 import Login from './pages/Login'
 import { useEffect, useState } from 'react';
+import AccountInfo from './components/AccountInfo';
+import SearchBar from './components/SearchBar';
 
 
 function App() {
 
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   let routes;
 
@@ -29,6 +33,8 @@ function App() {
 const [usernameState, setUsernameState] = useState("");
 const [passwordState, setPasswordState] = useState("");
 const [loggedInState, setLoggedInState] = useState(false);
+const [videoState, setVideoState] = useState('');
+const [searchBarState, setSearchBarState] = useState('');
 
 const onChangeHandler = (e, setValue)=>{
   setValue(e.target.value)
@@ -55,13 +61,46 @@ const onSubmithandler = async (e) => {
   const responseData = await fetch("http://localhost:4000/auth/login", options)
   const loggedInUser = await responseData.json()
   console.log("logged in:", loggedInUser)
-  // setLoggedInState(true);
+  
+  
+  if (loggedInUser){
+    setLoggedInState(true);
+  
   console.log(loggedInState);
   // store loged in user in the browser so that component rendering does not reset it, 
   localStorage.setItem("user", JSON.stringify(loggedInUser));
   console.log("logged In User", loggedInUser);
   console.log("end submit handler")
+    navigate("/");
+}
+else{
+  // alert user of incorrect crednetials
+  window.location.reload();
+  navigate("/auth/login")
+}
+} // end on submit handler
 
+const onSearchSubmitHandler = async (event) => {
+
+  event.preventDefault();
+
+  const url = `https://youtube-v31.p.rapidapi.com/search?q=${searchBarState}&part=snippet%2Cid&regionCode=US&maxResults=10`;
+
+  const options = {
+    method: 'GET',
+    headers: {
+    'X-RapidAPI-Key': 'ed2633ba42mshbfc9218461d8e0bp16bf0ajsn1ca01f4d7312',
+    'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+    }
+  }
+  
+  const response = await fetch(url, options);
+  const results = await response.json();
+
+  await setVideoState(results);
+
+  console.log(videoState.items);
+  
 }
 
 
@@ -72,7 +111,7 @@ const onSubmithandler = async (e) => {
     <>
 
       {/* should the Navbar be here or in the return inside the main element but above the routes? */}
-      <Navbar />
+      
 
       <Routes>
 
@@ -80,16 +119,15 @@ const onSubmithandler = async (e) => {
 
         <Route path="/auth/signup" element={<Signup/>}/>
 
-        <Route path='/new' element={<NewVideo />} />
+        <Route path='/new' element={<NewVideo videoState={videoState} setVideoState={setVideoState}/>} />
 
         <Route path='/:id/edit' element={<UpdateVideo />} />
 
-        <Route path="/auth/signup" element={<Signup/>} />
 
         <Route path="/auth/login" element={<Login loggedInState={loggedInState} onSubmitHandler={onSubmithandler} onChangeHandler={onChangeHandler} usernameState={usernameState} passwordState={passwordState} setPasswordState={setPasswordState} setUsernameState={setUsernameState} setLoggedInState={setLoggedInState}/>} />
 
         {/* fallback/catch-all route */}
-        <Route path='*' element={<Navigate to='/' replace />} />
+        {/* <Route path='*' element={<Navigate to='/' replace />} /> */}
 
       </Routes>
 
@@ -100,10 +138,11 @@ const onSubmithandler = async (e) => {
     <div className="App">
 
       <header>
-        <h1>Header</h1>
+      {/* <TopBar setLoggedInState={setLoggedInState} loggedInState= {loggedInState} /> */}
       </header>
 
       <main>
+        <TopBar onChangeHandler={onChangeHandler} onSearchSubmitHandler={onSearchSubmitHandler} setSearchBarState={setSearchBarState}/>
         {routes}
       </main>
       

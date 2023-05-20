@@ -1,6 +1,7 @@
 import React, {useEffect, useState } from 'react'
 import './Videos.css'
 import Video from '../components/Video';
+import Sidebar from '../components/Sidebar';
 
 function Videos() {
 
@@ -32,14 +33,16 @@ function Videos() {
 		videoList = videos.map((video, index) => {
 			return (
 				<Video key={index} video={video} />
+				
 			)
 		})
 	}
 
     return (
 		<div className="videos">
-			Video Page
+			<Sidebar />
 			<ul>{videoList}</ul>
+			
 		</div>
 	)
 }
