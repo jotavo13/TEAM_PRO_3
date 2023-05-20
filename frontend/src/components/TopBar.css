@@ -1,3 +1,8 @@
 .navbar{
     width:100%
+    display: flex;
+    justify-content: space-between;
+}
+.navbar navbar-expand sm {
+    justify-content: space-between;
 }

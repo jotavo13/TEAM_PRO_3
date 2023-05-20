@@ -1,0 +1,49 @@
+h3, h4 {
+    color: black;
+    font-family: "Roboto","Arial",sans-serif;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    font-weight: 500;
+    overflow: hidden;
+    display: block;
+    max-height: 4.4rem;
+    -webkit-line-clamp: 2;
+    display: box;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    white-space: normal;
+    padding-right: 30px;
+    color: whitesmoke;
+}
+
+
+.inline {
+    display: inline-block;
+    font-family: "Roboto","Arial",sans-serif;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    font-weight: 400;
+    cursor: pointer;
+
+}
+.grid-container {
+    height: 500px;
+    width: 345.25px;
+
+}
+
+.channelThum {
+    height: 36px;
+    width: 36px;
+}
+.thumbnail{
+    height: 185.19px;
+    width: 392.23px;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between
+}
