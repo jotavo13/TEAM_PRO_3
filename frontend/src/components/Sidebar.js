@@ -1,5 +1,7 @@
 import { React, useEffect } from "react";
 import "./Sidebar.css";
+import {BsCameraVideo} from "react-icons/bs"
+import { NavLink } from "react-router-dom";
 
 function Sidebar() {
   useEffect(() => {});
@@ -10,7 +12,10 @@ function Sidebar() {
         className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
         style={{width: "280px"}}
       >
-        <button>Add Video</button>
+        <NavLink to="/new">
+        <button><BsCameraVideo/>
+        <br/><span>Add Video</span></button>
+        </NavLink>
         <a
           href="/"
           className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"

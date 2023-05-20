@@ -15,7 +15,6 @@ import SearchBar from './SearchBar';
 function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChangeHandler, searchBarState, videoState, setVideoState, setSearchBarState}) {
     return (
 		<div className="navbar" data-bs-theme="dark">
-      TOP BAR
 
 <Navbar bg="dark" expand="sm" >
       <Container fluid>
