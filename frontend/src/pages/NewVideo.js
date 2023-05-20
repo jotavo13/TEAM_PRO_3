@@ -69,7 +69,7 @@ function NewVideo({videoState, setVideoState}) {
 
 		let videoObject = {
 				title:  finalVideoState.snippet.title,
-				thumbnail: finalVideoState.snippet.thumbnails.default.url,
+				thumbnail: videoResults.items[0].snippet.thumbnails.maxres.url,
 				channelThumbnail: channelResults.items[0].snippet.thumbnails.default.url,
 				channelTitle: finalVideoState.snippet.channelTitle,
 				publishTime: finalVideoState.snippet.publishTime,
