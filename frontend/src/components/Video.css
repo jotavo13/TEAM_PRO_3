@@ -13,10 +13,13 @@ h3, h4 {
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     white-space: normal;
-    padding-right: 30px;
     color: whitesmoke;
+    font-size: 16px;
 }
 
+.row {
+    height: 100px;
+}
 
 .inline {
     display: inline-block;
@@ -28,9 +31,8 @@ h3, h4 {
 
 }
 .grid-container {
-    height: 500px;
+    height: 342.48px;
     width: 345.25px;
-
 }
 
 .channelThum {
@@ -48,3 +50,25 @@ ul {
     justify-content:space-between;
     overflow: hidden;
 }
+
+
+@media (min-width: 400px) {
+    .playGround {
+      padding: 5px 20px;
+    }
+  }
+  @media (min-width: 500px) {
+    .playGround {
+      padding: 5px 11px;
+    }
+  }
+  @media (min-width: 960px) {
+    .playGround {
+      padding: 5px 11px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .playGround {
+      padding: 5px 5px;
+    }
+  }
