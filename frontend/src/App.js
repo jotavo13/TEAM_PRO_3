@@ -142,7 +142,7 @@ const onSearchSubmitHandler = async (event) => {
       </header>
 
       <main>
-        <TopBar onChangeHandler={onChangeHandler} onSearchSubmitHandler={onSearchSubmitHandler} setSearchBarState={setSearchBarState}/>
+        <TopBar onChangeHandler={onChangeHandler} onSearchSubmitHandler={onSearchSubmitHandler} setSearchBarState={setSearchBarState} loggedInState={loggedInState} setLoggedInState={setLoggedInState}/>
         {routes}
       </main>
       
