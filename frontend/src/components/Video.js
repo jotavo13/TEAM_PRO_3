@@ -3,7 +3,7 @@ import "./Video.css";
 import { NavLink } from "react-router-dom";
 
 function Video({ video }) {
-  const timeFromEvent = console.log(video);
+  // const timeFromEvent = console.log(video);
   return (
     <NavLink to={video.videoURL} target="_">
       <div class="grid-container">

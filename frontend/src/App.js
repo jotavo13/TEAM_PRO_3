@@ -1,6 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useNavigate, Route, Routes } from 'react-router-dom';
+import { useNavigate, Route, Routes, useParams } from 'react-router-dom';
 import Videos from './pages/Videos';
 import NewVideo from './pages/NewVideo';
 import UpdateVideo from './pages/UpdateVideo';
@@ -62,16 +62,21 @@ const onSubmithandler = async (e) => {
   const loggedInUser = await responseData.json()
   console.log("logged in:", loggedInUser)
   
+
   
   if (loggedInUser){
     setLoggedInState(true);
+
+    let userUrl = loggedInUser.id;
   
   console.log(loggedInState);
   // store loged in user in the browser so that component rendering does not reset it, 
   localStorage.setItem("user", JSON.stringify(loggedInUser));
-  console.log("logged In User", loggedInUser);
+  console.log("logged In User", toString(loggedInUser._id));
   console.log("end submit handler")
-    navigate("/");
+
+
+    navigate(`/${userUrl}`);
 }
 else{
   // alert user of incorrect crednetials
@@ -115,11 +120,11 @@ const onSearchSubmitHandler = async (event) => {
 
       <Routes>
 
-        <Route exact={true} path='/' element={<Videos />} />
+        <Route exact={true} path='/:id' element={<Videos/>} />
 
         <Route path="/auth/signup" element={<Signup/>}/>
 
-        <Route path='/new' element={<NewVideo videoState={videoState} setVideoState={setVideoState}/>} />
+        <Route path='/:id/new' element={<NewVideo videoState={videoState} setVideoState={setVideoState}/>} />
 
         <Route path='/:id/edit' element={<UpdateVideo />} />
 
