@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 
 function AccountInfo({loggedInState, setLoggedInState}) {
-    console.log("logged in state: ",loggedInState)
+    // console.log("logged in state: ",loggedInState)
     const Navigate = useNavigate();
 
         const logout = ()=>{

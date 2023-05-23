@@ -3,8 +3,9 @@ import "./Sidebar.css";
 import {BsCameraVideo} from "react-icons/bs"
 import { NavLink } from "react-router-dom";
 
-function Sidebar() {
+function Sidebar({username}) {
   useEffect(() => {});
+  console.log(username)
 
   return (
   
@@ -77,13 +78,13 @@ function Sidebar() {
             aria-expanded="false"
           >
             <img
-              src="https://github.com/mdo.png"
+              src=""
               alt=""
               width="32"
               height="32"
               className="rounded-circle me-2"
             />
-            <strong>mdo</strong>
+            <strong>{username}</strong>
           </a>
           <ul
             className="dropdown-menu dropdown-menu-dark text-small shadow"
