@@ -31,6 +31,10 @@ const videosSchema = new mongoose.Schema({
     },
     categories: {
         type: [String]
+    },
+    userId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     }
 })
 

@@ -43,21 +43,23 @@ app.use(
 
 // Routes
 
-//index route
-app.get('/', async (req, res) => {
 
-  const videos = await Videos.find({});
+
+//index route
+app.get('/:id', async (req, res) => {
+console.log("params id", req.params);
+  const videos = await Videos.find({userId: req.params.id});
 
   //need to output all our videos as json data so we can then fetch and use the data on the frontend
   res.json(videos);
 })
 
 //post route
-app.post('/', async (req, res) => {
+app.post('/:id', async (req, res) => {
   
   //using cors we are throwing our data into our mongoose schema using the req.body middleware with json 
+  req.body.userId = req.params.id;
   const video = await Videos.create(req.body);
-
   //returns the json for testing sake, not necessary
   res.json(req.body);
 

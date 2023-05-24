@@ -1,9 +1,10 @@
 import { React, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './NewVideo.css'
 		  
 function NewVideo({videoState, setVideoState}) {
-
+	const {id} = useParams()
+	console.log(id)
 	const navigate = useNavigate();
 
 	// const [videoState, setVideoState] = useState('');
@@ -86,7 +87,9 @@ function NewVideo({videoState, setVideoState}) {
 			body: JSON.stringify(videoObject)
 		}
 
-		const responseData = await fetch('http://localhost:4000', postOption);
+		
+		
+		const responseData = await fetch(`http://localhost:4000/${id}`, postOption);
 
 		const newVideoObject = await responseData.json();
 

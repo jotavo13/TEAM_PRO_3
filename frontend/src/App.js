@@ -1,6 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useNavigate, Route, Routes } from 'react-router-dom';
+import { useNavigate, Route, Routes, useParams } from 'react-router-dom';
 import Videos from './pages/Videos';
 import NewVideo from './pages/NewVideo';
 import UpdateVideo from './pages/UpdateVideo';
@@ -40,8 +40,10 @@ const onChangeHandler = (e, setValue)=>{
   setValue(e.target.value)
 };
 
-const onSubmithandler = async (e) => {
-  e.preventDefault();
+const onSubmitHandler = async (e) => {
+  if(e){
+    e.preventDefault()
+  }
   console.log("start submit handler")
   const username = usernameState;
   const password = passwordState;
@@ -59,19 +61,33 @@ const onSubmithandler = async (e) => {
     body: JSON.stringify(userAttempt)
   }   
   const responseData = await fetch("http://localhost:4000/auth/login", options)
-  const loggedInUser = await responseData.json()
-  console.log("logged in:", loggedInUser)
+  const localStoredUser = localStorage.getItem('user');
   
+  let loggedInUser;
+  if(localStoredUser){
+    console.log("local", await JSON.parse(localStoredUser))
+    loggedInUser = await JSON.parse(localStoredUser);
+    setUsernameState(loggedInUser.username);
+
+  }
+  else{
+    loggedInUser = await responseData.json()
+  }
+  console.log("logged in:", loggedInUser)
   
   if (loggedInUser){
     setLoggedInState(true);
+
+    let userUrl = loggedInUser.id;
   
   console.log(loggedInState);
   // store loged in user in the browser so that component rendering does not reset it, 
   localStorage.setItem("user", JSON.stringify(loggedInUser));
-  console.log("logged In User", loggedInUser);
+  console.log("logged In User", toString(loggedInUser.id));
   console.log("end submit handler")
-    navigate("/");
+
+
+    navigate(`/${userUrl}`);
 }
 else{
   // alert user of incorrect crednetials
@@ -102,10 +118,16 @@ const onSearchSubmitHandler = async (event) => {
   console.log(videoState.items);
   
 }
-
-
 //---------end of loggedInState
 
+useEffect (() =>{
+  const localStoredUser = localStorage.getItem('user');
+if(localStoredUser){
+  console.log("local stored: ",localStoredUser)
+  onSubmitHandler();
+}
+
+}, [])
 
   routes = (
     <>
@@ -115,16 +137,16 @@ const onSearchSubmitHandler = async (event) => {
 
       <Routes>
 
-        <Route exact={true} path='/' element={<Videos />} />
+        <Route exact={true} path='/:id' element={<Videos username={usernameState}/>} />
 
         <Route path="/auth/signup" element={<Signup/>}/>
 
-        <Route path='/new' element={<NewVideo videoState={videoState} setVideoState={setVideoState}/>} />
+        <Route path='/:id/new' element={<NewVideo videoState={videoState} setVideoState={setVideoState}/>} />
 
         <Route path='/:id/edit' element={<UpdateVideo />} />
 
 
-        <Route path="/auth/login" element={<Login loggedInState={loggedInState} onSubmitHandler={onSubmithandler} onChangeHandler={onChangeHandler} usernameState={usernameState} passwordState={passwordState} setPasswordState={setPasswordState} setUsernameState={setUsernameState} setLoggedInState={setLoggedInState}/>} />
+        <Route path="/auth/login" element={<Login loggedInState={loggedInState} onSubmitHandler={onSubmitHandler} onChangeHandler={onChangeHandler} usernameState={usernameState} passwordState={passwordState} setPasswordState={setPasswordState} setUsernameState={setUsernameState} setLoggedInState={setLoggedInState}/>} />
 
         {/* fallback/catch-all route */}
         {/* <Route path='*' element={<Navigate to='/' replace />} /> */}
