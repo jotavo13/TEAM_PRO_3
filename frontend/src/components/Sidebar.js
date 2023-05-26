@@ -1,19 +1,22 @@
 import { React, useEffect } from "react";
 import "./Sidebar.css";
 import {BsCameraVideo} from "react-icons/bs"
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 function Sidebar({username}) {
+
+  const {id} = useParams();
+
   useEffect(() => {});
   console.log(username)
 
   return (
   
       <div
-        className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
+        className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark sidebar"
         style={{width: "280px"}}
       >
-        <NavLink to="/new">
+        <NavLink to={`/${id}/new`} >
         <button><BsCameraVideo/>
         <br/><span>Add Video</span></button>
         </NavLink>

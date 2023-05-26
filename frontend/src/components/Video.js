@@ -6,11 +6,11 @@ function Video({ video }) {
   // const timeFromEvent = console.log(video);
   return (
     <NavLink to={video.videoURL} target="_">
-      <div class="grid-container">
+      <div class="card">
         <div className="video">
-          <div class="card" style={{ width: "18rem" }}>
-            <img src={video.thumbnail} alt="" className="thumbnail" />
-          </div>
+        
+            <img src={video.thumbnail} alt="" className="thumbnail card-img-top" />
+         
           <br></br>
           <div class="row">
           <div class="col-sm-6 bg text-white"style={{ width: "25%", height: "25%", backGround: "none"}}>
@@ -30,6 +30,7 @@ function Video({ video }) {
         </div>
       </div>
     </NavLink>
+    
   );
 }
 

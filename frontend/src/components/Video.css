@@ -39,9 +39,20 @@ h3, h4 {
     height: 36px;
     width: 36px;
 }
+
+.card{
+  background-color: rgb(34, 34, 34);
+  width: 25%
+}
+
 .thumbnail{
     height: 185.19px;
     width: 392.23px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+.topTitle{
+  overflow: hidden !important
 }
 
 ul {

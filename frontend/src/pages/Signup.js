@@ -1,5 +1,6 @@
 import { useState} from "react";
-import bcrypt from "bcryptjs"
+import bcrypt from "bcryptjs";
+import "./Signup.css"
 
 function NewUser() {
     const [usernameState, setUsernameState] = useState("");
@@ -40,6 +41,8 @@ const onChangeHandler = (e, setValue)=>{
 
 
 return(
+    <div className="signup">
+        Create an account:
     <form onSubmit={onSubmithandler}>
         <input type="email" placeholder="email" name="username" value={usernameState} onChange={(e)=> onChangeHandler(e, setUsernameState)}/>
         <input type="password" placeholder="password" name="password" value={passwordState} onChange={(e)=> onChangeHandler(e, setPasswordState)}/>
@@ -47,6 +50,7 @@ return(
         <input type="submit" value="Signup"/>
 
     </form>
+    </div>
 )
 }
 
