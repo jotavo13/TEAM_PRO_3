@@ -8,6 +8,12 @@
 .navbar navbar-expand sm {
     justify-content: space-between;
 }
+
 a{
     color: white !important
+=======
+
+.topbar{
+    padding: 0 15px 0 0;
+
 }

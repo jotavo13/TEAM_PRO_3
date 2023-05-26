@@ -2,5 +2,18 @@
     background-color: rgb(34, 34, 34) !important;
 }
 hr{
-    color: gray
+  color: gray
+}
+.sidecolumn{
+    min-height: 100%;
+    margin: -25px 0 0 0;
+    border: 0;
+}
+
+.categories{
+    margin: 8px 0 0 67px;
+}
+
+.categoriesList{
+    margin: 0 5px 0 0;
 }

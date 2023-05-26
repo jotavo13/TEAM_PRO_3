@@ -4,7 +4,7 @@ import Video from '../components/Video';
 import Sidebar from '../components/Sidebar';
 import { useParams } from 'react-router';
 
-function Videos({username}) {
+function Videos({username, userID}) {
 
 	const {id} = useParams();
 	console.log("id",id)
@@ -28,22 +28,32 @@ function Videos({username}) {
 	}, [])
 
 	let videoList;
+	let fillerVideo = {
+		title:  '',
+		thumbnail: '',
+		channelThumbnail: '',
+		channelTitle: '',
+		publishTime: '',
+		views: '',
+		videoURL: '',
+		categories: []
+	}
+
 
 	if(videos === ''){
-		videoList = <h2>Loading...</h2>
+		videoList = <h2>Loading...</h2>;
 	}
 	else{
 		videoList = videos.map((video, index) => {
 			return (
 				<Video key={index} video={video} />
-				
 			)
 		})
 	}
 
     return (
 		<div className="videos">
-			<Sidebar username={username}/>
+			<Sidebar username={username} userID={userID}/>
 			<ul>{videoList}</ul>
 			
 		</div>

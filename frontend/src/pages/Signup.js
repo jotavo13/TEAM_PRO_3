@@ -1,11 +1,15 @@
 import { useState} from "react";
 import bcrypt from "bcryptjs";
 import "./Signup.css"
+import { useNavigate } from "react-router-dom";
+
+
 
 function NewUser() {
     const [usernameState, setUsernameState] = useState("");
     const [passwordState, setPasswordState] = useState("");
 
+    const navigate = useNavigate();
 
     const onSubmithandler = async (e)=>{
         e.preventDefault();
@@ -29,6 +33,7 @@ function NewUser() {
 
         const responseData = await fetch("http://localhost:4000/auth/signup", options)
 
+        navigate('/auth/login');
 
     }
 
