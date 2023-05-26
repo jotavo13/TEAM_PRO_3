@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import "./Login.css"
+import { NavLink } from 'react-router-dom';
 
 
 function Login({loggedInState, onSubmitHandler, onChangeHandler, usernameState, passwordState, setUsernameState, setPasswordState, setLoggedInState}) {
@@ -39,7 +41,8 @@ function Login({loggedInState, onSubmitHandler, onChangeHandler, usernameState, 
         )
     }else{
     return (
-        <div>
+        <>
+        <div className='login'>
             {/* {console.log("user", loggedinState)} */}
             Login Here
 
@@ -50,6 +53,10 @@ function Login({loggedInState, onSubmitHandler, onChangeHandler, usernameState, 
                 "/>
              </form>
         </div>
+        <NavLink to={"/auth/signup"}>
+        <button>Create Account</button>
+        </NavLink>
+        </>
     );
 }
 }

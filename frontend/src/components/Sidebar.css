@@ -1,3 +1,9 @@
+.sidebar{
+    background-color: rgb(34, 34, 34) !important;
+}
+hr{
+  color: gray
+}
 .sidecolumn{
     min-height: 100%;
     margin: -25px 0 0 0;

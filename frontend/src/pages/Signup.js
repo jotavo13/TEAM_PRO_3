@@ -1,6 +1,8 @@
 import { useState} from "react";
 import bcrypt from "bcryptjs";
+import "./Signup.css"
 import { useNavigate } from "react-router-dom";
+
 
 
 function NewUser() {
@@ -44,6 +46,8 @@ const onChangeHandler = (e, setValue)=>{
 
 
 return(
+    <div className="signup">
+        Create an account:
     <form onSubmit={onSubmithandler}>
         <input type="email" placeholder="email" name="username" value={usernameState} onChange={(e)=> onChangeHandler(e, setUsernameState)}/>
         <input type="password" placeholder="password" name="password" value={passwordState} onChange={(e)=> onChangeHandler(e, setPasswordState)}/>
@@ -51,6 +55,7 @@ return(
         <input type="submit" value="Signup"/>
 
     </form>
+    </div>
 )
 }
 

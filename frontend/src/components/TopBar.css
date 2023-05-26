@@ -2,11 +2,18 @@
     width:100%;
     display: flex;
     justify-content: space-between;
+    background-color: rgb(34, 34, 34) !important;
+    
 }
 .navbar navbar-expand sm {
     justify-content: space-between;
 }
 
+a{
+    color: white !important
+=======
+
 .topbar{
     padding: 0 15px 0 0;
+
 }
