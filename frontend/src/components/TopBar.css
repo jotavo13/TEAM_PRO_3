@@ -6,3 +6,7 @@
 .navbar navbar-expand sm {
     justify-content: space-between;
 }
+
+.topbar{
+    padding: 0 15px 0 0;
+}

@@ -12,15 +12,15 @@ import SearchBar from './SearchBar';
 
 
 		  
-function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChangeHandler, searchBarState, videoState, setVideoState, setSearchBarState}) {
+function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChangeHandler, searchBarState, videoState, setVideoState, setSearchBarState, userID}) {
     return (
 		<div className="navbar" data-bs-theme="dark">
 
-<Navbar bg="dark" expand="sm" >
+<Navbar bg="dark" expand="sm" className="topbar">
       <Container fluid>
         <Navbar.Brand href="#">
-			<NavLink to={'/'}>
-				<img src = "https://i.imgur.com/c6kNr4C.png" style={{width:"100px"}}/>
+			<NavLink to={`/${userID}`}>
+				<img src = "https://i.imgur.com/c6kNr4C.png" style={{width:"200px", margin:"0 0 0 29px"}}/>
 			</NavLink>
 		</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />

@@ -36,6 +36,8 @@ const [loggedInState, setLoggedInState] = useState(false);
 const [videoState, setVideoState] = useState('');
 const [searchBarState, setSearchBarState] = useState('');
 
+const [userID, setUserID] = useState('');
+
 const onChangeHandler = (e, setValue)=>{
   setValue(e.target.value)
 };
@@ -68,7 +70,6 @@ const onSubmitHandler = async (e) => {
     console.log("local", await JSON.parse(localStoredUser))
     loggedInUser = await JSON.parse(localStoredUser);
     setUsernameState(loggedInUser.username);
-
   }
   else{
     loggedInUser = await responseData.json()
@@ -76,23 +77,27 @@ const onSubmitHandler = async (e) => {
   console.log("logged in:", loggedInUser)
   
   if (loggedInUser){
+
     setLoggedInState(true);
+
+    setUserID(loggedInUser.id);
 
     let userUrl = loggedInUser.id;
   
   console.log(loggedInState);
   // store loged in user in the browser so that component rendering does not reset it, 
   localStorage.setItem("user", JSON.stringify(loggedInUser));
-  console.log("logged In User", toString(loggedInUser.id));
+  console.log("logged In User", userID);
   console.log("end submit handler")
 
-
+  if(e){
     navigate(`/${userUrl}`);
+  }
 }
 else{
   // alert user of incorrect crednetials
   window.location.reload();
-  navigate("/auth/login")
+  navigate("/auth/login");
 }
 } // end on submit handler
 
@@ -121,11 +126,12 @@ const onSearchSubmitHandler = async (event) => {
 //---------end of loggedInState
 
 useEffect (() =>{
+
   const localStoredUser = localStorage.getItem('user');
-if(localStoredUser){
-  console.log("local stored: ",localStoredUser)
-  onSubmitHandler();
-}
+  if(localStoredUser){
+    console.log("local stored: ",localStoredUser)
+    onSubmitHandler();
+  }
 
 }, [])
 
@@ -133,18 +139,16 @@ if(localStoredUser){
     <>
 
       {/* should the Navbar be here or in the return inside the main element but above the routes? */}
-      
 
       <Routes>
 
-        <Route exact={true} path='/:id' element={<Videos username={usernameState}/>} />
+        <Route exact={true} path='/:id' element={<Videos username={usernameState} userID={userID}/>} />
 
         <Route path="/auth/signup" element={<Signup/>}/>
 
-        <Route path='/:id/new' element={<NewVideo videoState={videoState} setVideoState={setVideoState}/>} />
+        <Route path='/:id/new' element={<NewVideo videoState={videoState} setVideoState={setVideoState} userID={userID}/>} />
 
         <Route path='/:id/edit' element={<UpdateVideo />} />
-
 
         <Route path="/auth/login" element={<Login loggedInState={loggedInState} onSubmitHandler={onSubmitHandler} onChangeHandler={onChangeHandler} usernameState={usernameState} passwordState={passwordState} setPasswordState={setPasswordState} setUsernameState={setUsernameState} setLoggedInState={setLoggedInState}/>} />
 
@@ -164,7 +168,7 @@ if(localStoredUser){
       </header>
 
       <main>
-        <TopBar onChangeHandler={onChangeHandler} onSearchSubmitHandler={onSearchSubmitHandler} setSearchBarState={setSearchBarState} loggedInState={loggedInState} setLoggedInState={setLoggedInState}/>
+        <TopBar onChangeHandler={onChangeHandler} onSearchSubmitHandler={onSearchSubmitHandler} setSearchBarState={setSearchBarState} loggedInState={loggedInState} setLoggedInState={setLoggedInState} userID={userID}/>
         {routes}
       </main>
       

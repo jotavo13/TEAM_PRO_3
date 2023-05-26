@@ -2,7 +2,7 @@ import { React, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import './NewVideo.css'
 		  
-function NewVideo({videoState, setVideoState}) {
+function NewVideo({videoState, setVideoState, userID}) {
 	const {id} = useParams()
 	console.log(id)
 	const navigate = useNavigate();
@@ -93,7 +93,7 @@ function NewVideo({videoState, setVideoState}) {
 
 		const newVideoObject = await responseData.json();
 
-		navigate('/');
+		navigate(`/${userID}`);
 
 	}
 
