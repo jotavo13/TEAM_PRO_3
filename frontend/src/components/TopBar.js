@@ -15,7 +15,7 @@ import SearchBar from './SearchBar';
 function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChangeHandler, searchBarState, videoState, setVideoState, setSearchBarState, userID}) {
     return (
 		<div className="navbar" data-bs-theme="dark">
-
+{/* if not logged in, disable home button */}
 <Navbar bg="dark" expand="sm" className="topbar">
       <Container fluid>
         <Navbar.Brand href="#">
