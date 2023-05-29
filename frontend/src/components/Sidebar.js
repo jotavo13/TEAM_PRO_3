@@ -79,7 +79,7 @@ function Sidebar({username, userID}) {
             aria-expanded="false"
           >
             <img
-              src=""
+              src="https://simg.nicepng.com/png/small/128-1280406_view-user-icon-png-user-circle-icon-png.png"
               alt=""
               width="32"
               height="32"
