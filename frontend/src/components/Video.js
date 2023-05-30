@@ -4,7 +4,11 @@ import { NavLink } from "react-router-dom";
 
 function Video({ video }) {
   // const timeFromEvent = console.log(video);
+
+  const vidId = video._id;
+
   return (
+    <>
     <NavLink to={video.videoURL} target="_" className={"cardLink"}>
       <div class="card">
         <div className="video">
@@ -25,11 +29,15 @@ function Video({ video }) {
           <span className="inline">
             <h4 className="label">{video.publishTime}</h4>
           </span>
+          <NavLink to={`/${vidId}/delete`}>
+          <span style={{color: "white"}}>REMOVE</span>
+          </NavLink>
           </div>
             </div>
         </div>
       </div>
     </NavLink>
+    </>
     
   );
 }

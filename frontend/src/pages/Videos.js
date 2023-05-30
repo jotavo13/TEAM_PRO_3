@@ -4,7 +4,7 @@ import Video from '../components/Video';
 import Sidebar from '../components/Sidebar';
 import { useParams } from 'react-router';
 
-function Videos({username, userID}) {
+function Videos({username, userID, videoState}) {
 
 	const {id} = useParams();
 	console.log("id",id)
@@ -47,6 +47,7 @@ function Videos({username, userID}) {
 		videoList = videos.map((video, index) => {
 			return (
 				<Video key={index} video={video} />
+				
 			)
 		})
 	}
