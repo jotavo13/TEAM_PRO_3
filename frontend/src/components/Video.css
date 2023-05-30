@@ -1,7 +1,13 @@
+/* html {
+  height: max-content;
+  width: min-content;
+} */
+
 h3, h4 {
   color: black;
   font-family: "Roboto","Arial",sans-serif;
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
+  line-height: 2.2rem;
   font-weight: 500;
   overflow: hidden;
   display: block;
@@ -17,37 +23,32 @@ h3, h4 {
   margin-bottom: 0.5px;
 }
 h4 {
-font-size: 14px;
-
-}
-
-.topTitle {
-width: fit-content;
-height: fit-content;
-padding: 0;
-margin: 0;
-content: auto;
-overflow: hidden !important
-
-}
-
-.midTitle {
-width: fit-content;
-height: fit-content;
-padding: 0;
-margin: 0;
-overflow: hidden !important
-}
-
-.card-img-top {
-height: 202px;
-width: 360px;
+  font-size: 14px;
+  
 }
 
 .row {
   height: 100px;
-  width: 360px;
+  text-overflow: ellipsis;
 }
+.topTitle {
+  width: fit-content;
+  height: fit-content;
+  padding: 0;
+  margin: 0;
+  content: auto;
+  overflow: hidden !important
+
+}
+
+.midTitle {
+  width: fit-content;
+  height: fit-content;
+  padding: 0;
+  margin: 0;
+  overflow: hidden !important
+}
+
 
 .inline {
   display: inline-block;
@@ -58,10 +59,6 @@ width: 360px;
   cursor: pointer;
 
 }
-.grid-container {
-  height: 342.48px;
-  width: 345.25px;
-}
 
 .channelThum {
   height: 36px;
@@ -71,10 +68,17 @@ width: 360px;
 .card{
 background-color: rgb(34, 34, 34);
 /* width: 33%; */
+border: none;
 }
 .cardLink{
 width: 200px;
 margin: 18px;
+overflow: hidden;
+}
+
+.label{
+overflow: hidden;
+font-size: 12px;
 }
 
 .thumbnail{
@@ -89,6 +93,8 @@ ul {
   flex-wrap: wrap;
   justify-content:space-between;
   overflow: hidden;
+  height: max-content;
+  width: max-content;
 }
 
 
