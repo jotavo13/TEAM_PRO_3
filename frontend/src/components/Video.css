@@ -1,97 +1,120 @@
+/* html {
+  height: max-content;
+  width: min-content;
+} */
+
 h3, h4 {
-    color: black;
-    font-family: "Roboto","Arial",sans-serif;
-    /* font-size: 1.6rem; */
-    line-height: 2.2rem;
-    font-weight: 500;
-    overflow: hidden;
-    display: block;
-    max-height: 4.4rem;
-    -webkit-line-clamp: 2;
-    display: box;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-    white-space: normal;
-    color: whitesmoke;
-    font-size: 16px;
+  color: black;
+  font-family: "Roboto","Arial",sans-serif;
+  /* font-size: 1.6rem; */
+  line-height: 2.2rem;
+  font-weight: 500;
+  overflow: hidden;
+  display: block;
+  max-height: 4.4rem;
+  -webkit-line-clamp: 2;
+  display: box;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: normal;
+  color: whitesmoke;
+  font-size: 16px;
+  margin-bottom: 0.5px;
+}
+h4 {
+  font-size: 14px;
+  
 }
 
 .row {
-    height: 100px;
-    text-overflow: ellipsis;
+  height: 100px;
+  text-overflow: ellipsis;
+}
+.topTitle {
+  width: fit-content;
+  height: fit-content;
+  padding: 0;
+  margin: 0;
+  content: auto;
+  overflow: hidden !important
 
 }
 
-.inline {
-    display: inline-block;
-    font-family: "Roboto","Arial",sans-serif;
-    font-size: 1.4rem;
-    line-height: 2rem;
-    font-weight: 400;
-    cursor: pointer;
-
-}
-.grid-container {
-    height: 342.48px;
-    width: 345.25px;
-}
-
-.channelThum {
-    height: 36px;
-    width: 36px;
-}
-
-.card{
-  background-color: rgb(34, 34, 34);
-  /* width: 33%; */
-}
-.cardLink{
-  width: 200px;
-  margin: 18px;
-  overflow: hidden;
-}
-
-.label{
-  overflow: hidden;
-  font-size: 12px;
-}
-
-.thumbnail{
-    /* height: 185.19px;
-    width: 392.23px; */
-    border-radius: 10px;
-    object-fit: cover;
-}
-.topTitle{
+.midTitle {
+  width: fit-content;
+  height: fit-content;
+  padding: 0;
+  margin: 0;
   overflow: hidden !important
 }
 
+
+.inline {
+  display: inline-block;
+  font-family: "Roboto","Arial",sans-serif;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  font-weight: 400;
+  cursor: pointer;
+
+}
+
+.channelThum {
+  height: 36px;
+  width: 36px;
+}
+
+.card{
+background-color: rgb(34, 34, 34);
+/* width: 33%; */
+border: none;
+}
+.cardLink{
+width: 200px;
+margin: 18px;
+overflow: hidden;
+}
+
+.label{
+overflow: hidden;
+font-size: 12px;
+}
+
+.thumbnail{
+  /* height: 185.19px;
+  width: 392.23px; */
+  border-radius: 10px;
+  object-fit: cover;
+}
+
 ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:space-between;
-    overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-between;
+  overflow: hidden;
+  height: max-content;
+  width: max-content;
 }
 
 
 @media (min-width: 400px) {
-    .playGround {
-      padding: 5px 20px;
-    }
+  .playGround {
+    padding: 5px 20px;
   }
-  @media (min-width: 500px) {
-    .playGround {
-      padding: 5px 11px;
-    }
+}
+@media (min-width: 500px) {
+  .playGround {
+    padding: 5px 11px;
   }
-  @media (min-width: 960px) {
-    .playGround {
-      padding: 5px 11px;
-    }
+}
+@media (min-width: 960px) {
+  .playGround {
+    padding: 5px 11px;
   }
-  @media (min-width: 1024px) {
-    .playGround {
-      padding: 5px 5px;
-    }
+}
+@media (min-width: 1024px) {
+  .playGround {
+    padding: 5px 5px;
   }
+}
