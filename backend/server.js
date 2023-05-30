@@ -11,6 +11,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const bcrypt = require('bcryptjs');
 const Videos = require('./models/videos');
+const Category = require('./models/category');
 
 
 /////////////////////////////////////////////////////
@@ -47,12 +48,20 @@ app.use(
 
 //index route
 app.get('/:id', async (req, res) => {
-console.log("params id", req.params);
   const videos = await Videos.find({userId: req.params.id});
 
   //need to output all our videos as json data so we can then fetch and use the data on the frontend
   res.json(videos);
 })
+
+//index route
+app.get('/:id/categories', async (req, res) => {
+  console.log("params id", req.params);
+    const categories = await Category.find({userId: req.params.id});
+  
+    //need to output all our videos as json data so we can then fetch and use the data on the frontend
+    res.json(categories);
+})  
 
 //post route
 app.post('/:id', async (req, res) => {
@@ -64,6 +73,18 @@ app.post('/:id', async (req, res) => {
   res.json(req.body);
 
 })
+
+//post route
+app.post('/:id/categories', async (req, res) => {
+  
+  //using cors we are throwing our data into our mongoose schema using the req.body middleware with json 
+  req.body.userId = req.params.id;
+  const category = await Category.create(req.body);
+  //returns the json for testing sake, not necessary
+  res.json(req.body);
+
+})
+
 
 //------------Auth Routes
 app.get("/auth/signup", (req, res)=>{
@@ -108,6 +129,7 @@ app.get("/auth/signup", (req, res)=>{
  })
 
 
+
 //------------Auth Routes
  app.get("/auth/signup", (req, res)=>{
   res.send("hello signup page")
@@ -117,7 +139,9 @@ app.get("/auth/signup", (req, res)=>{
   console.log(req.body)
   // create and send to mongo
   res.json(await User.create(req.body))
- })
+ });
+
+
 
 // Listener
 

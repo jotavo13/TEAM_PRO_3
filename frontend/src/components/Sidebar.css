@@ -11,3 +11,7 @@
 .categoriesList{
     margin: 0 5px 0 0;
 }
+
+.hidden {
+    visibility: hidden
+}

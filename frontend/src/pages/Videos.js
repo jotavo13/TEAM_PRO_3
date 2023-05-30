@@ -28,16 +28,6 @@ function Videos({username, userID}) {
 	}, [])
 
 	let videoList;
-	let fillerVideo = {
-		title:  '',
-		thumbnail: '',
-		channelThumbnail: '',
-		channelTitle: '',
-		publishTime: '',
-		views: '',
-		videoURL: '',
-		categories: []
-	}
 
 
 	if(videos === ''){
