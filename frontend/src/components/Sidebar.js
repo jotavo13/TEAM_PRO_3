@@ -1,7 +1,7 @@
 import { React, useEffect } from "react";
 import "./Sidebar.css";
 import {BsCameraVideo} from "react-icons/bs"
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Sidebar({username, userID}) {
 
@@ -11,12 +11,10 @@ function Sidebar({username, userID}) {
   return (
   
       <div
-
-        className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark sidebar"
+        className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark sidecolumn"
         style={{width: "280px"}}
       >
         <NavLink to={`/${userID}/new`}>
-
         <button><BsCameraVideo/>
         <br/><span>Add Video</span></button>
         </NavLink>
@@ -25,7 +23,9 @@ function Sidebar({username, userID}) {
           className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
           >
           <br/>
+          <NavLink to={`/${userID}/categories`}>
           <div className="fs-4 categories">Categories</div>
+          </NavLink>
         </a>
 
         <hr />
@@ -34,14 +34,14 @@ function Sidebar({username, userID}) {
             <a href="#" className="nav-link active" aria-current="page">
               <svg className="bi me-2" width="16" height="16">
               </svg>
-              Cat1
+              Funny
             </a>
           </li>
           <li>
             <a href="#" className="nav-link text-white">
               <svg className="bi me-2" width="16" height="16">
               </svg>
-              Cat2
+              Horror
             </a>
           </li>
           <li>
@@ -79,8 +79,8 @@ function Sidebar({username, userID}) {
             aria-expanded="false"
           >
             <img
-              src="https://simg.nicepng.com/png/small/128-1280406_view-user-icon-png-user-circle-icon-png.png"
-              alt=""
+              src="https://t3.ftcdn.net/jpg/05/71/08/24/360_F_571082432_Qq45LQGlZsuby0ZGbrd79aUTSQikgcgc.jpg"
+              alt="account icon"
               width="32"
               height="32"
               className="rounded-circle me-2"

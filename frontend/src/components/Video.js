@@ -3,7 +3,11 @@ import "./Video.css";
 import { NavLink } from "react-router-dom";
 
 function Video({ video }) {
-  
+
+  // const timeFromEvent = console.log(video);
+
+ const vidId = video._id;
+
 function formatNumber(number) {
 
   if (number >= 1000000) {
@@ -32,8 +36,8 @@ const dateNormal = hours.toString().padStart(2, '0') + ':' +
                     seconds.toString().padStart(2, '0');
 
 
-
   return (
+    <>
     <NavLink to={video.videoURL} target="_" className={"cardLink"}>
       <div class="card">
         <div className="video">
@@ -54,11 +58,15 @@ const dateNormal = hours.toString().padStart(2, '0') + ':' +
           <span className="inline">
             <h4>  {dateNormal}</h4>
           </span>
+          <NavLink to={`/${vidId}/delete`}>
+          <span style={{color: "white"}}>REMOVE</span>
+          </NavLink>
           </div>
             </div>
         </div>
       </div>
     </NavLink>
+    </>
     
   );
 }

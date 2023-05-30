@@ -10,6 +10,7 @@ import Login from './pages/Login'
 import { useEffect, useState } from 'react';
 import AccountInfo from './components/AccountInfo';
 import SearchBar from './components/SearchBar';
+import DeleteVideo from './pages/DeleteVideo';
 
 
 function App() {
@@ -142,13 +143,15 @@ useEffect (() =>{
 
       <Routes>
 
-        <Route exact={true} path='/:id' element={<Videos username={usernameState} userID={userID}/>} />
+        <Route exact={true} path='/:id' element={<Videos username={usernameState} userID={userID} videoState={videoState}/>} />
 
         <Route path="/auth/signup" element={<Signup/>}/>
 
         <Route path='/:id/new' element={<NewVideo videoState={videoState} setVideoState={setVideoState} userID={userID}/>} />
 
         <Route path='/:id/edit' element={<UpdateVideo />} />
+
+        <Route path='/:vidId/delete' element={<DeleteVideo userID = {userID}/>} />
 
         <Route path="/auth/login" element={<Login loggedInState={loggedInState} onSubmitHandler={onSubmitHandler} onChangeHandler={onChangeHandler} usernameState={usernameState} passwordState={passwordState} setPasswordState={setPasswordState} setUsernameState={setUsernameState} setLoggedInState={setLoggedInState}/>} />
 
