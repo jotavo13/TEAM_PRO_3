@@ -140,7 +140,7 @@ function NewVideo({ videoState, setVideoState, userID }) {
     const videos = videoState.items.map((video, index) => {
       return (
         <div onClick={onFinalChangeHandler} key={index} className={index}>
-          <p className={`${index} text`}>{video.snippet.title}</p>
+          <h1 className={index}>{video.snippet.title}</h1>
         </div>
       );
     });

@@ -1,3 +1,9 @@
 .hidden {
     visibility: hidden
 }
+.text{
+    color: white;
+}
+.selected{
+    color: red;
+}
