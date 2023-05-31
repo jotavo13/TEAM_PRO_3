@@ -48,6 +48,7 @@ app.use(
 
 //index route
 app.get('/:id', async (req, res) => {
+
   const videos = await Videos.find({userId: req.params.id});
 
   //need to output all our videos as json data so we can then fetch and use the data on the frontend
@@ -55,11 +56,17 @@ app.get('/:id', async (req, res) => {
 })
 
 app.get('/:id/videos/:search', async (req, res) => {
-  const videos = await Videos.find({title: req.params.search, userId: req.params.id});
 
-  console.log(videos);
+  let searchedVideos;
+
+  const videos = await Videos.find({userId: req.params.id});
+
+  searchedVideos = videos.filter((video) => {
+    return video.title.toLowerCase().includes(req.params.search.toLowerCase())
+  })
+
   //need to output all our videos as json data so we can then fetch and use the data on the frontend
-  res.json(videos);
+  res.json(searchedVideos);
 })
 
 app.get('/:id/sortvideos/:sort', async (req, res) => {
