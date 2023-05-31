@@ -4,13 +4,6 @@ import { NavLink } from 'react-router-dom';
 
 
 function Login({loggedInState, onSubmitHandler, onChangeHandler, usernameState, passwordState, setUsernameState, setPasswordState, setLoggedInState}) {
-    // const [usernameState, setUsernameState] = useState("");
-    // const [passwordState, setPasswordState] = useState("");
-
-    // const onChangeHandler = (e, setValue)=>{
-    //     // console.log(e.target.value);
-    //     setValue(e.target.value)
-    // };
 
     const [storedUser, setStoredUser] = useState(null);
     useEffect(()=>{

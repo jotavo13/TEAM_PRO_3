@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./AccountInfo.css"
 
 
 function AccountInfo({loggedInState, setLoggedInState}) {
@@ -17,8 +18,16 @@ function AccountInfo({loggedInState, setLoggedInState}) {
             Navigate("/auth/login")
         }
 
+        const createAccount = () =>{
+            Navigate("/auth/signup")
+        }
+
         if (!loggedInState) {
-             return(  <button onClick={loginButton}>Login</button>)
+             return(  
+             <>
+             <button onClick={loginButton}>Login</button>
+             <button onClick={createAccount}>New Account</button>
+             </>)
         }
        
         if(loggedInState){
