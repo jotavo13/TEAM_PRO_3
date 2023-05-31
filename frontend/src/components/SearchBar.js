@@ -5,9 +5,6 @@ function SearchBar({onChangeHandler, onSearchSubmitHandler, setSearchBarState, s
 
 	// const [searchBarState, setSearchBarState] = useState(null);
 
-	useEffect(() => {
-		
-	})
 
     return (
 		<div className="searchbar">

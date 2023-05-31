@@ -43,7 +43,7 @@ function Videos({username, userID}) {
 
     return (
 		<div className="videos">
-			<Sidebar username={username} userID={userID}/>
+			<Sidebar username={username} userID={userID} videos={videos} setVideos={setVideos}/>
 			<ul>{videoList}</ul>
 			
 		</div>

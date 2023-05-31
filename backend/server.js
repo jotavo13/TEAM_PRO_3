@@ -85,6 +85,25 @@ app.post('/:id/categories', async (req, res) => {
 
 })
 
+app.post('/:id/categories/:videoname', async (req, res) => {
+  
+  const videos = await Videos.findOne({title: req.params.videoname, userId: req.params.id});
+
+  let newVideo = videos;
+  
+  newVideo.category = req.body.name;
+  console.log(req.body);
+
+
+  const updatedVideo = await Videos.findOneAndUpdate({title: req.params.videoname, userId: req.params.id}, newVideo)
+
+  console.log(updatedVideo);
+  
+  res.json(req.body);
+
+})
+
+
 
 //------------Auth Routes
 app.get("/auth/signup", (req, res)=>{

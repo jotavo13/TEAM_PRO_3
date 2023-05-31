@@ -4,7 +4,7 @@ import {BsCameraVideo} from "react-icons/bs"
 import { NavLink, useNavigate } from "react-router-dom";
 import Categories from './Categories';
 
-function Sidebar({username, userID}) {
+function Sidebar({username, userID, videos, setVideos}) {
 
   let navigate = useNavigate();
 
@@ -76,7 +76,7 @@ function Sidebar({username, userID}) {
 
     setInputBarState('');
 
-    categoryAddButton();
+    hideCreateCategories();
   }
 
   const hideCreateCategories = (e) => {
@@ -106,7 +106,7 @@ function Sidebar({username, userID}) {
 				  </form>
         </div>
         <hr />
-        <Categories categories={categories} setCategories={setCategories}/>
+        <Categories categories={categories} setCategories={setCategories} userID={userID} videos={videos} setVideos={setVideos}/>
         <hr />
         <div className="dropdown">
           <a

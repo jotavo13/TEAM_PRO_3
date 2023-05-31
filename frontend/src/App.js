@@ -142,7 +142,7 @@ useEffect (() =>{
 
       <Routes>
 
-        <Route exact={true} path='/:id' element={<Videos username={usernameState} userID={userID}/>} />
+        <Route path='/:id' element={<Videos username={usernameState} userID={userID} videoState={videoState} setVideoState={setVideoState}/>} />
 
         <Route path="/auth/signup" element={<Signup/>}/>
 

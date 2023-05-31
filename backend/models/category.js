@@ -6,7 +6,7 @@ let Schema = mongoose.Schema;
 let model = mongoose.model;
 
 const categorySchema = new Schema({
-    name: {type: String, unique: true},
+    name: {type: String, unique: false},
     userId:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
