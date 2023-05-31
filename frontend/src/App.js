@@ -35,6 +35,9 @@ const [passwordState, setPasswordState] = useState("");
 const [loggedInState, setLoggedInState] = useState(false);
 const [videoState, setVideoState] = useState('');
 const [searchBarState, setSearchBarState] = useState('');
+const [finalVideoState, setFinalVideoState] = useState('');
+const [videos, setVideos] = useState('');
+
 
 const [userID, setUserID] = useState('');
 
@@ -105,25 +108,99 @@ const onSearchSubmitHandler = async (event) => {
 
   event.preventDefault();
 
-  const url = `https://youtube-v31.p.rapidapi.com/search?q=${searchBarState}&part=snippet%2Cid&regionCode=US&maxResults=10`;
+  console.log(window.location.pathname.slice(window.location.pathname.length - 3))
+
+  if(window.location.pathname.slice(window.location.pathname.length - 3) == 'new'){
+
+    const url = `https://youtube-v31.p.rapidapi.com/search?q=${searchBarState}&part=snippet%2Cid&regionCode=US&maxResults=10`;
+  
+    const options = {
+      method: 'GET',
+      headers: {
+      'X-RapidAPI-Key': 'ed2633ba42mshbfc9218461d8e0bp16bf0ajsn1ca01f4d7312',
+      'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+      }
+    }
+    
+    const response = await fetch(url, options);
+    const results = await response.json();
+  
+    await setVideoState(results);
+  
+    console.log(videoState.items);
+  
+    await setSearchBarState('');
+  }
+  else{
+
+    const url = `http://localhost:4000/${userID}/videos/${searchBarState}`;
+      
+    const response = await fetch(url);
+    const results = await response.json();
+  
+    await setVideos(results);
+
+    await setSearchBarState('');
+
+  }
+  
+}
+//---------end of loggedInState
+
+const onFinalSubmitHandler = async (event) => {
+  event.preventDefault();
 
   const options = {
     method: 'GET',
     headers: {
-    'X-RapidAPI-Key': 'ed2633ba42mshbfc9218461d8e0bp16bf0ajsn1ca01f4d7312',
-    'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+      'X-RapidAPI-Key': 'ed2633ba42mshbfc9218461d8e0bp16bf0ajsn1ca01f4d7312',
+      'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
     }
   }
+
+  const url = `https://youtube-v31.p.rapidapi.com/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${finalVideoState.id.videoId}`;
   
   const response = await fetch(url, options);
-  const results = await response.json();
-
-  await setVideoState(results);
-
-  console.log(videoState.items);
+  const videoResults = await response.json();
   
+  const url2 = `https://youtube-v31.p.rapidapi.com/channels?part=snippet%2Cstatistics&id=${finalVideoState.snippet.channelId}`
+  
+  const response2 = await fetch(url2, options);
+  const channelResults = await response2.json();
+
+  console.log(videoResults, channelResults)
+
+  let videoObject = {
+      title:  finalVideoState.snippet.title,
+      thumbnail: videoResults.items[0].snippet.thumbnails.maxres.url,
+      channelThumbnail: channelResults.items[0].snippet.thumbnails.default.url,
+      channelTitle: finalVideoState.snippet.channelTitle,
+      publishTime: finalVideoState.snippet.publishTime,
+      views: videoResults.items[0].statistics.viewCount,
+      videoURL: `https://www.youtube.com/watch?v=${finalVideoState.id.videoId}`,
+      categories: []
+  }
+  
+  const postOption = {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(videoObject)
+  }
+
+  
+  
+  const responseData = await fetch(`http://localhost:4000/${userID}`, postOption);
+
+  const newVideoObject = await responseData.json();
+
+  await setSearchBarState('');
+
+  navigate(`/${userID}`);
+
 }
-//---------end of loggedInState
+
 
 useEffect (() =>{
 
@@ -142,11 +219,11 @@ useEffect (() =>{
 
       <Routes>
 
-        <Route path='/:id' element={<Videos username={usernameState} userID={userID} videoState={videoState} setVideoState={setVideoState}/>} />
+        <Route path='/:id' element={<Videos username={usernameState} userID={userID} videoState={videoState} setVideoState={setVideoState} videos={videos} setVideos={setVideos}/>} />
 
         <Route path="/auth/signup" element={<Signup/>}/>
 
-        <Route path='/:id/new' element={<NewVideo videoState={videoState} setVideoState={setVideoState} userID={userID}/>} />
+        <Route path='/:id/new' element={<NewVideo videoState={videoState} setVideoState={setVideoState} userID={userID} searchBarState={searchBarState} setSearchBarState={setSearchBarState} onFinalSubmitHandler={onFinalSubmitHandler} finalVideoState={finalVideoState} setFinalVideoState={setFinalVideoState}/>} />
 
         <Route path='/:id/edit' element={<UpdateVideo />} />
 

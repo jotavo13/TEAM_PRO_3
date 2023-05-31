@@ -54,6 +54,15 @@ app.get('/:id', async (req, res) => {
   res.json(videos);
 })
 
+app.get('/:id/videos/:search', async (req, res) => {
+  const videos = await Videos.find({title: req.params.search, userId: req.params.id});
+
+  console.log(videos);
+  //need to output all our videos as json data so we can then fetch and use the data on the frontend
+  res.json(videos);
+})
+
+
 //index route
 app.get('/:id/categories', async (req, res) => {
   console.log("params id", req.params);

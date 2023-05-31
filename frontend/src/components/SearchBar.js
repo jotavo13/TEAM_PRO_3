@@ -17,4 +17,3 @@ function SearchBar({onChangeHandler, onSearchSubmitHandler, setSearchBarState, s
 }
 		  
 export default SearchBar
-		  

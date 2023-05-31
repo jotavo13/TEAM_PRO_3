@@ -13,6 +13,10 @@ import SearchBar from './SearchBar';
 
 		  
 function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChangeHandler, searchBarState, videoState, setVideoState, setSearchBarState, userID}) {
+
+    const sort = async () => {
+      console.log('yes');
+    }
     return (
 		<div className="navbar" data-bs-theme="dark">
 
@@ -31,7 +35,7 @@ function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChang
             navbarScroll
           >
             <NavDropdown title="Sort By" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+              <NavDropdown.Item onClick={sort}>Action</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
                 Another action
               </NavDropdown.Item>

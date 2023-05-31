@@ -4,11 +4,10 @@ import Video from '../components/Video';
 import Sidebar from '../components/Sidebar';
 import { useParams } from 'react-router';
 
-function Videos({username, userID}) {
+function Videos({username, userID, videos, setVideos}) {
 
 	const {id} = useParams();
 	console.log("id",id)
-	const [videos, setVideos] = useState('');
 
 	const URL = `http://localhost:4000/${id}`;
 
