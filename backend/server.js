@@ -119,6 +119,11 @@ app.put('/:id/categories/:categoryname/edit', async (req, res) => {
 
 })
 
+app.delete('/:id/categories/:categoryname', async (req, res) => {
+  const deletedCategory = await Category.findOneAndDelete({name: req.params.categoryname, userId: req.params.id});
+  res.json(req.body);
+})
+
 
 
 

@@ -111,22 +111,78 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
   
   }
 
+  const onDeleteSubmitHandler = async (e) => {
+	e.preventDefault();
+
+	const url = `http://localhost:4000/${id}/categories/${e.target.id}`;
+
+	let categoryDelete = {
+		name: e.target.id,
+		userId: id
+	}
+
+	const postOption = {
+		method: "DELETE",
+		headers: {
+		  "Content-Type": "application/json",
+		},
+		body: JSON.stringify(categoryDelete),
+	};
+
+	const responseData = await fetch(
+		url,
+		postOption
+	);
+	
+	const newUpdatedCategoryObject = await responseData.json();	
+
+	const fetchCategories = async () => {
+		try {
+		  let responseData = await fetch(`http://localhost:4000/${id}/categories`);
+		  let newCategories = await responseData.json();
+		  await setCategories(newCategories);
+		} catch (err) {
+		  console.log(err);
+		}
+	  };
+	  fetchCategories();
+  }
+
   const onCategoryClickHandler = async (event) => {
     event.preventDefault();
 
 	if(event.target.tagName != 'BUTTON'){
-		const url = `http://localhost:4000/${id}/categories/${event.target.id}`;
-	
-		const fetchCategories = async () => {
-		  try {
-		    let responseData = await fetch(url);
-		    let clickedVideos = await responseData.json();
-		    await setVideos(clickedVideos);
-		  } catch (err) {
-		    console.log(err);
-		  }
-		};
-		fetchCategories();
+		console.log(event.target.id);
+		if(event.target.id != ''){
+			const url = `http://localhost:4000/${id}/categories/${event.target.id}`;
+		
+			const fetchCategories = async () => {
+			  try {
+				let responseData = await fetch(url);
+				let clickedVideos = await responseData.json();
+				await setVideos(clickedVideos);
+			  } catch (err) {
+				console.log(err);
+			  }
+			};
+			fetchCategories();
+
+		}
+		else{
+			const url = `http://localhost:4000/${id}`;
+		
+			const fetchCategories = async () => {
+			  try {
+				let responseData = await fetch(url);
+				let allVideos = await responseData.json();
+				await setVideos(allVideos);
+			  } catch (err) {
+				console.log(err);
+			  }
+			};
+			fetchCategories();
+
+		}
 	}
   };
 
@@ -192,6 +248,14 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
             >
               Edit
             </button>
+			<button
+              className={index}
+              onClick={onDeleteSubmitHandler}
+			  id={category.name}
+            >
+              Delete
+            </button>
+
 
           </a>
           <div className="hidden" id={index}>
@@ -216,7 +280,12 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
 
   return (
     <ul className="nav nav-pills flex-column mb-auto categoriesList">
-      {categoriesList}
+		{/* id={category.name} (removed from a and svg elements) */}
+		<a onClick={onCategoryClickHandler} className="nav-link active" aria-current="page" >
+            <svg className="bi me-2" width="16" height="16" ></svg>
+			None
+        </a>
+      	{categoriesList}
     </ul>
   );
 }
