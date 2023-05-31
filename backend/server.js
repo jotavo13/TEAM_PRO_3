@@ -63,6 +63,14 @@ app.get('/:id/categories', async (req, res) => {
     res.json(categories);
 })  
 
+app.get('/:id/categories/:click', async (req, res) => {
+  console.log("params id", req.params.click);
+    const videos = await Videos.find({userId: req.params.id, category: req.params.click});
+    //need to output all our videos as json data so we can then fetch and use the data on the frontend
+    res.json(videos);
+})
+
+
 //post route
 app.post('/:id', async (req, res) => {
   
@@ -85,20 +93,18 @@ app.post('/:id/categories', async (req, res) => {
 
 })
 
-app.post('/:id/categories/:videoname', async (req, res) => {
+app.put('/:id/categories/:videoname', async (req, res) => {
   
   const videos = await Videos.findOne({title: req.params.videoname, userId: req.params.id});
 
   let newVideo = videos;
   
   newVideo.category = req.body.name;
+  
+  const updatedVideo = await Videos.findOneAndUpdate({title: req.params.videoname, userId: req.params.id}, newVideo)
+  
   console.log(req.body);
 
-
-  const updatedVideo = await Videos.findOneAndUpdate({title: req.params.videoname, userId: req.params.id}, newVideo)
-
-  console.log(updatedVideo);
-  
   res.json(req.body);
 
 })

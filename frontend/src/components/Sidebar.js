@@ -76,7 +76,7 @@ function Sidebar({username, userID, videos, setVideos}) {
 
     setInputBarState('');
 
-    hideCreateCategories();
+    hideCreateCategories(e);
   }
 
   const hideCreateCategories = (e) => {
