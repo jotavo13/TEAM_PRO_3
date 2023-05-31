@@ -7,10 +7,15 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
 
   let [newCategoryState, setNewCategoryState] = useState("");
   let [categoryState, setCategoryState] = useState("");
+  let [categoryUpdateState, setCategoryUpdateState] = useState("");
 
   const onChangeHandler = (e) => {
     setNewCategoryState(e.target.value);
   };
+
+  const onCategoryUpdateChangeHandler = (e) => {
+	setCategoryUpdateState(e.target.value);
+  }
 
   useEffect(() => {
     const URL = `http://localhost:4000/${userID}/categories`;
@@ -37,7 +42,7 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
 
     let categoryAddition = {
       name: categoryState,
-      userId: id,
+      userId: id
     };
 
     const postOption = {
@@ -61,6 +66,50 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
     // toggleCategory.classList.toggle('hidden');
     // navigate(`/${userID}`);
   };
+
+  const onCategoryUpdateSubmitHandler = async (event) => {
+	event.preventDefault();
+
+	let categoryUpdate = {
+		name: categoryUpdateState,
+		userId: id
+	}
+
+	const postOption = {
+		method: "PUT",
+		headers: {
+		  "Content-Type": "application/json",
+		},
+		body: JSON.stringify(categoryUpdate),
+	};
+
+	const responseData = await fetch(
+	`http://localhost:4000/${id}/categories/${categoryState}/edit`,
+	postOption
+	);
+
+	const newUpdatedCategoryObject = await responseData.json();
+
+    console.log("this", event.target.classList.value);
+    const addCategory = document.getElementById(event.target.classList.value);
+    addCategory.classList.toggle("hidden");
+
+	const fetchCategories = async () => {
+		try{
+			let responseData = await fetch(`http://localhost:4000/${userID}/categories`);
+			let allCategories = await responseData.json();
+			// console.log(allVideos);
+			await setCategories(allCategories);
+			console.log("categories", categories);
+		}
+		catch(err){
+			console.log(err);
+		}
+	}
+	fetchCategories();
+
+  
+  }
 
   const onCategoryClickHandler = async (event) => {
     event.preventDefault();
@@ -92,6 +141,15 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
     // setNewCategoryState(categories[0].name)
   };
 
+  const hideEditCategory = (e) => {
+	e.preventDefault();
+    console.log("this", e.target.classList);
+    const addCategory = document.getElementById(`${e.target.classList}_category`);
+    addCategory.classList.toggle("hidden");
+	setCategoryUpdateState(e.target.id);
+	setCategoryState(e.target.id);
+  }
+
   // console.log("id",id)
 
   let categoriesList;
@@ -112,7 +170,10 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
     categoriesList = <h2>Loading...</h2>;
   } else {
     categoriesList = categories.map((category, index) => {
-      return (
+      
+	let updateCategory = `${index}_category`
+		
+	return (
         <li className="nav-item">
           <a onClick={onCategoryClickHandler} className="nav-link active" aria-current="page" id={category.name}>
             <svg className="bi me-2" width="16" height="16" id={category.name}></svg>
@@ -124,6 +185,14 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
             >
               +
             </button>
+			<button
+              className={index}
+              onClick={hideEditCategory}
+			  id={category.name}
+            >
+              Edit
+            </button>
+
           </a>
           <div className="hidden" id={index}>
             <form onSubmit={onSubmitHandler} className={index}>
@@ -133,6 +202,12 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
               <input type="submit" value="Add" />
               {/* <button onClick={hideCreateCategories}>Cancel</button> */}
             </form>
+          </div>
+		  <div className="hidden" id={updateCategory} >
+		  		<form onSubmit={onCategoryUpdateSubmitHandler} className={updateCategory}>
+					<input type="text" name="categoryUpdate" value={categoryUpdateState} onChange={(e) => onCategoryUpdateChangeHandler(e)}/> 
+					<input type="submit" value="Update" />
+				</form>
           </div>
         </li>
       );

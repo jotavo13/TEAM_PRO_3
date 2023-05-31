@@ -109,6 +109,17 @@ app.put('/:id/categories/:videoname', async (req, res) => {
 
 })
 
+app.put('/:id/categories/:categoryname/edit', async (req, res) => {
+  
+  const category = await Category.findOneAndUpdate({name: req.params.categoryname, userId: req.params.id}, req.body);  
+    
+  console.log(req.body);
+
+  res.json(req.body);
+
+})
+
+
 
 
 //------------Auth Routes
