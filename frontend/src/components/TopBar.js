@@ -12,11 +12,26 @@ import SearchBar from './SearchBar';
 
 
 		  
-function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChangeHandler, searchBarState, videoState, setVideoState, setSearchBarState, userID}) {
+function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChangeHandler, searchBarState, videoState, setVideoState, setSearchBarState, userID, videos, setVideos}) {
 
-    const sort = async () => {
-      console.log('yes');
+    const sortHandler = async (e) => {
+      e.preventDefault();
+      console.log(e.target.id);
+      let URL = `http://localhost:4000/${userID}/sortvideos/${e.target.id}`
+      const fetchVideos = async () => {
+        try{
+          let responseData = await fetch(URL);
+          let sortedVideos = await responseData.json();
+          // console.log(allVideos);
+          setVideos(sortedVideos);
+        }
+        catch(err){
+          console.log(err);
+        }
+      }
+      fetchVideos();  
     }
+    
     return (
 		<div className="navbar" data-bs-theme="dark">
 
@@ -35,13 +50,17 @@ function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChang
             navbarScroll
           >
             <NavDropdown title="Sort By" id="navbarScrollingDropdown">
-              <NavDropdown.Item onClick={sort}>Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Another action
+              <NavDropdown.Item onClick={sortHandler} id='0'>
+                Views Lowest - Highest
               </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Something else here
+              <NavDropdown.Item onClick={sortHandler} id='1'>
+                Views Highest - Lowest
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={sortHandler} id='2'>
+                Date Old - New
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={sortHandler} id='3'>
+                Date New - Old
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>

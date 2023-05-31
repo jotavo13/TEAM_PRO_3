@@ -62,6 +62,127 @@ app.get('/:id/videos/:search', async (req, res) => {
   res.json(videos);
 })
 
+app.get('/:id/sortvideos/:sort', async (req, res) => {
+
+  let sortedVideos;
+  let placeholder;
+  let swapCheck = true;
+
+  const videos = await Videos.find({userId: req.params.id});
+
+  console.log(videos[0].publishTime)
+  if(req.params.sort == '0'){
+    while(swapCheck == true){
+      swapCheck = false;
+      for(let i=0; i<videos.length-1; i++){
+        if(videos[i].views > videos[i+1].views){
+            swapCheck = true;
+            placeholder = videos[i];
+            videos[i] = videos[i+1];
+            videos[i+1] = placeholder;
+        }
+      }
+    }
+  }
+  else if(req.params.sort == '1'){
+    while(swapCheck == true){
+      swapCheck = false;
+      for(let i=0; i<videos.length-1; i++){
+        if(videos[i].views < videos[i+1].views){
+            swapCheck = true;
+            placeholder = videos[i];
+            videos[i] = videos[i+1];
+            videos[i+1] = placeholder;
+        }
+      }
+    }
+  }
+  else if(req.params.sort == '2'){
+    let year1;
+    let year2;
+    let month1;
+    let month2;
+    let day1;
+    let day2;
+    while(swapCheck == true){
+      swapCheck = false;
+      for(let i=0; i<videos.length-1; i++){
+
+        year1 = videos[i].publishTime.slice(0,4);
+        year2 = videos[i + 1].publishTime.slice(0,4);
+        month1 = videos[i].publishTime.slice(5,7);
+        month2 = videos[i + 1].publishTime.slice(5,7);
+        day1 = videos[i].publishTime.slice(8,10);
+        day2 = videos[i + 1].publishTime.slice(8,10);
+
+        if(year1 > year2){
+            swapCheck = true;
+            placeholder = videos[i];
+            videos[i] = videos[i+1];
+            videos[i+1] = placeholder;
+        }
+        else if(year2 >= year1 && month1 > month2){
+          swapCheck = true;
+          placeholder = videos[i];
+          videos[i] = videos[i+1];
+          videos[i+1] = placeholder;
+        }
+        else if(year2 >= year1 && month2 >= month1 && day1 > day2){
+          swapCheck = true;
+          placeholder = videos[i];
+          videos[i] = videos[i+1];
+          videos[i+1] = placeholder;
+        }
+      }
+    }
+  }
+  else if(req.params.sort == '3'){
+    let year1;
+    let year2;
+    let month1;
+    let month2;
+    let day1;
+    let day2;
+    while(swapCheck == true){
+      swapCheck = false;
+      for(let i=0; i<videos.length-1; i++){
+
+        year1 = videos[i].publishTime.slice(0,4);
+        year2 = videos[i + 1].publishTime.slice(0,4);
+        month1 = videos[i].publishTime.slice(5,7);
+        month2 = videos[i + 1].publishTime.slice(5,7);
+        day1 = videos[i].publishTime.slice(8,10);
+        day2 = videos[i + 1].publishTime.slice(8,10);
+
+        if(year1 < year2){
+            swapCheck = true;
+            placeholder = videos[i];
+            videos[i] = videos[i+1];
+            videos[i+1] = placeholder;
+        }
+        else if(year2 <= year1 && month1 < month2){
+          swapCheck = true;
+          placeholder = videos[i];
+          videos[i] = videos[i+1];
+          videos[i+1] = placeholder;
+        }
+        else if(year2 <= year1 && month2 <= month1 && day1 < day2){
+          swapCheck = true;
+          placeholder = videos[i];
+          videos[i] = videos[i+1];
+          videos[i+1] = placeholder;
+        }
+      }
+    }
+  }
+
+
+
+
+  //need to output all our videos as json data so we can then fetch and use the data on the frontend
+  res.json(videos);
+})
+
 
 //index route
 app.get('/:id/categories', async (req, res) => {

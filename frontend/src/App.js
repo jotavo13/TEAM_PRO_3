@@ -245,7 +245,7 @@ useEffect (() =>{
       </header>
 
       <main>
-        <TopBar onChangeHandler={onChangeHandler} onSearchSubmitHandler={onSearchSubmitHandler} setSearchBarState={setSearchBarState} loggedInState={loggedInState} setLoggedInState={setLoggedInState} userID={userID}/>
+        <TopBar onChangeHandler={onChangeHandler} onSearchSubmitHandler={onSearchSubmitHandler} setSearchBarState={setSearchBarState} loggedInState={loggedInState} setLoggedInState={setLoggedInState} userID={userID} videos={videos} setVideos={setVideos}/>
         {routes}
       </main>
       
