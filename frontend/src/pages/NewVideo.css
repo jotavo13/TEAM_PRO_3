@@ -2,14 +2,16 @@
   display: none !important;
 }
 
+.hidden2 {
+    visibility: hidden;
+}
+
 .selected {
   border: 2px solid red;
 }
 .video{
   margin-bottom: 0;
 }
-
-
 
 #text{
   color: white;
@@ -38,9 +40,11 @@ h1 {
 .newvideosdiv {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 25px;
-
+  justify-content: center;
+  gap: 0px 50px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 80vh;
 }
 .videoborder{
     border: 2px solid red;

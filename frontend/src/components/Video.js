@@ -52,7 +52,7 @@ const formatDate = (date) => {
 
   if(todaysYear > videoYear){
     relativeTime = videoYear - todaysYear;
-    relativeTime *= relativeTime;
+    relativeTime = relativeTime * (-1);
     if(relativeTime == 1){
       return `${relativeTime.toString()} year ago`;
     }
@@ -62,7 +62,7 @@ const formatDate = (date) => {
   }
   else if(todaysMonth > videoMonth){
     relativeTime = videoMonth - todaysMonth;
-    relativeTime *= relativeTime;
+    relativeTime = relativeTime * (-1);
     if(relativeTime == 1){
       return `${relativeTime.toString()} month ago`;
     }
@@ -72,7 +72,7 @@ const formatDate = (date) => {
   }
   else if(todaysDay > videoDay){
     relativeTime = videoDay - todaysDay;
-    relativeTime *= relativeTime;
+    relativeTime = relativeTime * (-1);
     if(relativeTime == 1){
       return `${relativeTime.toString()} day ago`;
     }
@@ -84,7 +84,7 @@ const formatDate = (date) => {
     console.log(todaysHour, videoHour)
 
     relativeTime = videoHour - todaysHour;
-    relativeTime *= relativeTime;
+    relativeTime = relativeTime * (-1);
     if(relativeTime == 1){
       return `${relativeTime.toString()} hour ago`;
     }
@@ -95,7 +95,7 @@ const formatDate = (date) => {
   else{
     console.log(videoMinute, todaysMinute)
     relativeTime = videoMinute - todaysMinute;
-    relativeTime *= relativeTime;
+    relativeTime = relativeTime * (-1);
     if(relativeTime == 1){
       return `${relativeTime.toString()} minute ago`;
     }

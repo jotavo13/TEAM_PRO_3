@@ -46,9 +46,9 @@ function NewVideo({
   const onFinalChangeHandler = async (event) => {
     const confirmButton = document.getElementById("confirmButton");
     console.log(confirmButton);
-	console.log(confirmButton.classList.contains("hidden"))
-	if(confirmButton.classList.contains("hidden")){
-		confirmButton.classList.toggle("hidden");
+	console.log(confirmButton.classList.contains("hidden2"))
+	if(confirmButton.classList.contains("hidden2")){
+		confirmButton.classList.toggle("hidden2");
 	}
 	else{
 
@@ -67,7 +67,7 @@ function NewVideo({
 	if(toggledVideo.classList.contains("videoborder")){
 		console.log('success');
 		toggledVideo.classList.remove("videoborder")
-		confirmButton.classList.toggle("hidden");
+		confirmButton.classList.toggle("hidden2");
 	}
 	else{
 		toggledVideo.classList.toggle("videoborder")
@@ -158,7 +158,7 @@ function NewVideo({
       <div className="newvideo">
         <span className="vidName">Select one of the videos below:</span>
         <form onSubmit={onFinalSubmitHandler} id="confirmform">
-          <button className="hidden" id="confirmButton">
+          <button className="hidden2" id="confirmButton">
             Confirm
           </button>
         </form>
