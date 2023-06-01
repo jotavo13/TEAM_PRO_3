@@ -69,6 +69,24 @@ button, .search {
   border-radius: 4px !important;
   color: white;
 }
-button:hover, .search:hover {
+button:hover, .search:hover, .categorybutton:hover {
   background-color: rgb(126, 126, 126);
+}
+
+.categorybutton {
+  background-color: rgb(107, 107, 107);
+  border: 1px solid;
+  border-color: rgb(107, 107, 107);
+  border-radius: 4px !important;
+  color: white;
+}
+
+.newcategoryform {
+  display: flex;
+  gap: 10px;
+}
+
+#formatform {
+  display: flex;
+  gap: 10px;
 }

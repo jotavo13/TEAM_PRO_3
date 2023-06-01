@@ -100,10 +100,10 @@ function Sidebar({username, userID, videos, setVideos}) {
 
         <div className="fs-4 categories">Categories<button onClick={categoryAddButton} className="categoriesbutton">+</button></div>
         <div className='hidden' id='addCategoryDiv'>				
-          <form onSubmit={onSubmitHandler}>
-            <input type="text" name="searchBar" value={inputBarState} placeholder="Add Category Here" onChange={(e) => onChangeHandler(e, setInputBarState)}/> 
-            <input type="submit" value="Create" />
-            <button onClick={hideCreateCategories}>Cancel</button>
+          <form className='newcategoryform' onSubmit={onSubmitHandler}>
+            <input className='inputbar' type="text" name="searchBar" value={inputBarState} placeholder="Add Category Here" onChange={(e) => onChangeHandler(e, setInputBarState)}/> 
+            <input className='categorybutton' type="submit" value="Create" />
+            <button className='categorybutton' onClick={hideCreateCategories}>Cancel</button>
 				  </form>
         </div>
         <hr />

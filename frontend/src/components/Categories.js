@@ -264,18 +264,18 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
 
           </a>
           <div className="hidden" id={addVideoCategory}>
-            <form onSubmit={onSubmitHandler} className={index}>
+            <form onSubmit={onSubmitHandler} className={index} id='formatform'>
               <select id="title" name="title" onChange={onChangeHandler}>
                 {videoTitles}
               </select>
-              <input type="submit" value="Add" />
+              <input className='categorybutton' type="submit" value="Add" />
               {/* <button onClick={hideCreateCategories}>Cancel</button> */}
             </form>
           </div>
 		  <div className="hidden" id={updateCategory} >
-		  		<form onSubmit={onCategoryUpdateSubmitHandler} className={updateCategory}>
+		  		<form onSubmit={onCategoryUpdateSubmitHandler} className={updateCategory} id='formatform'>
 					<input type="text" name="categoryUpdate" value={categoryUpdateState} onChange={(e) => onCategoryUpdateChangeHandler(e)}/> 
-					<input type="submit" value="Update" />
+					<input className='categorybutton' type="submit" value="Confirm" />
 				</form>
           </div>
         </li>
