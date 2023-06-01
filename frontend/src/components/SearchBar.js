@@ -5,9 +5,6 @@ function SearchBar({onChangeHandler, onSearchSubmitHandler, setSearchBarState, s
 
 	// const [searchBarState, setSearchBarState] = useState(null);
 
-	useEffect(() => {
-		
-	})
 
     return (
 		<div className='surround'>
@@ -22,4 +19,3 @@ function SearchBar({onChangeHandler, onSearchSubmitHandler, setSearchBarState, s
 }
 		  
 export default SearchBar
-		  

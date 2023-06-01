@@ -29,8 +29,8 @@ const videosSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    categories: {
-        type: [String]
+    category: {
+        type: String
     },
     userId:{
         type: mongoose.Schema.Types.ObjectId,

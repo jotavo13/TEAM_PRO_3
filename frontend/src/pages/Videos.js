@@ -4,11 +4,10 @@ import Video from '../components/Video';
 import Sidebar from '../components/Sidebar';
 import { useParams } from 'react-router';
 
-function Videos({username, userID, videoState}) {
+function Videos({username, userID, videos, setVideos}) {
 
 	const {id} = useParams();
 	console.log("id",id)
-	const [videos, setVideos] = useState('');
 
 	const URL = `http://localhost:4000/${id}`;
 
@@ -28,16 +27,6 @@ function Videos({username, userID, videoState}) {
 	}, [])
 
 	let videoList;
-	let fillerVideo = {
-		title:  '',
-		thumbnail: '',
-		channelThumbnail: '',
-		channelTitle: '',
-		publishTime: '',
-		views: '',
-		videoURL: '',
-		categories: []
-	}
 
 
 	if(videos === ''){
@@ -55,7 +44,7 @@ function Videos({username, userID, videoState}) {
 
     return (
 		<div className="videos">
-			<Sidebar username={username} userID={userID}/>
+			<Sidebar username={username} userID={userID} videos={videos} setVideos={setVideos}/>
 			<ul>{videoList}</ul>
 			
 		</div>

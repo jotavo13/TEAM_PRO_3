@@ -17,6 +17,11 @@ hr{
 .categoriesList{
     margin: 0 5px 0 0;
 }
+
+.hidden {
+    /* visibility: hidden */
+    display: none;
+}
 .add-button{
     background-color: rgb(0, 55, 154);
     border-radius: 8px;

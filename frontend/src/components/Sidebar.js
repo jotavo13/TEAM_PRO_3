@@ -1,13 +1,91 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import "./Sidebar.css";
 import {BsCameraVideo} from "react-icons/bs"
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import Categories from './Categories';
 import Button from "react-bootstrap/Button";
 
-function Sidebar({username, userID}) {
+function Sidebar({username, userID, videos, setVideos}) {
 
-  useEffect(() => {});
-  console.log(username)
+  let navigate = useNavigate();
+
+  const [inputBarState, setInputBarState] = useState('');
+  const [categories, setCategories] = useState(null);
+
+	const URL = `http://localhost:4000/${userID}/categories`;
+
+	useEffect(() => {
+		const fetchCategories = async () => {
+			try{
+				let responseData = await fetch(URL);
+				let allCategories = await responseData.json();
+				// console.log(allVideos);
+				await setCategories(allCategories);
+				console.log("categories", categories);
+			}
+			catch(err){
+				console.log(err);
+			}
+		}
+		fetchCategories();
+	}, [])
+
+
+  const categoryAddButton = async (e, index) => {
+    const addCategoryDiv = document.getElementById('addCategoryDiv');
+		console.log(addCategoryDiv);
+		addCategoryDiv.classList.toggle('hidden');
+  }
+
+  const onChangeHandler = async (e, setValue) => {
+		setValue(e.target.value);
+	}
+
+  const onSubmitHandler = async (e) => {
+
+    e.preventDefault();
+
+    let newCategory = {
+      name: inputBarState
+    }
+  
+  const postOption = {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(newCategory)
+  }
+
+    const responseData = await fetch(`http://localhost:4000/${userID}/categories`, postOption);
+
+    const newCategoryObject = await responseData.json();
+
+		const fetchCategories = async () => {
+			try{
+				let responseData = await fetch(`http://localhost:4000/${userID}/categories`);
+				let allCategories = await responseData.json();
+				// console.log(allVideos);
+				await setCategories(allCategories);
+				console.log("categories", categories);
+			}
+			catch(err){
+				console.log(err);
+			}
+		}
+		fetchCategories();
+
+    setInputBarState('');
+
+    hideCreateCategories(e);
+  }
+
+  const hideCreateCategories = (e) => {
+    e.preventDefault();
+    const addCategoryDiv = document.getElementById('addCategoryDiv');
+		console.log(addCategoryDiv);
+		addCategoryDiv.classList.toggle('hidden');
+  }
 
   return (
   
@@ -19,57 +97,17 @@ function Sidebar({username, userID}) {
         <Button className="add-button"><BsCameraVideo/>
         <br/><span >Add Video</span></Button>
         </NavLink>
-        <a
-          href="/"
-          className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
-          >
-          <br/>
-          <NavLink to={`/${userID}/categories`}>
-          <div className="fs-4 categories">Categories</div>
-          </NavLink>
-        </a>
 
+        <div className="fs-4 categories">Categories<button onClick={categoryAddButton}>+</button></div>
+        <div className='hidden' id='addCategoryDiv'>				
+          <form onSubmit={onSubmitHandler}>
+            <input type="text" name="searchBar" value={inputBarState} placeholder="Add Category Here" onChange={(e) => onChangeHandler(e, setInputBarState)}/> 
+            <input type="submit" value="Create" />
+            <button onClick={hideCreateCategories}>Cancel</button>
+				  </form>
+        </div>
         <hr />
-        <ul className="nav nav-pills flex-column mb-auto categoriesList">
-          <li className="nav-item">
-            <a href="#" className="nav-link active" aria-current="page">
-              <svg className="bi me-2" width="16" height="16">
-              </svg>
-              Funny
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link text-white">
-              <svg className="bi me-2" width="16" height="16">
-              </svg>
-              Horror
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link text-white">
-              <svg className="bi me-2" width="16" height="16">
-               
-              </svg>
-              Cat3
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link text-white">
-              <svg className="bi me-2" width="16" height="16">
-                
-              </svg>
-              Cat4
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link text-white">
-              <svg className="bi me-2" width="16" height="16">
-                
-              </svg>
-              Cat5
-            </a>
-          </li>
-        </ul>
+        <Categories categories={categories} setCategories={setCategories} userID={userID} videos={videos} setVideos={setVideos}/>
         <hr />
         <div className="dropdown">
           

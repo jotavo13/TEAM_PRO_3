@@ -31,7 +31,6 @@ function AccountInfo({loggedInState, setLoggedInState}) {
         }
        
         if(loggedInState){
-
             return(<button onClick={logout}>Logout</button>)
         }
 }
