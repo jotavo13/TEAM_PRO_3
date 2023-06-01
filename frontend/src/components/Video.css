@@ -1,74 +1,138 @@
+/* html {
+  height: max-content;
+  width: min-content;
+} */
+
 h3, h4 {
-    color: black;
-    font-family: "Roboto","Arial",sans-serif;
-    font-size: 1.6rem;
-    line-height: 2.2rem;
-    font-weight: 500;
-    overflow: hidden;
-    display: block;
-    max-height: 4.4rem;
-    -webkit-line-clamp: 2;
-    display: box;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-    white-space: normal;
-    color: whitesmoke;
-    font-size: 16px;
+  color: black;
+  font-family: "Roboto","Arial",sans-serif;
+  /* font-size: 1.6rem; */
+  line-height: 1.2rem;
+  font-weight: 500;
+  overflow: hidden;
+  display: block;
+  max-height: 4.4rem;
+  -webkit-line-clamp: 2;
+  display: box;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: normal;
+  color: whitesmoke;
+  font-size: 16px;
+  margin-bottom: 0.5px;
+  text-decoration: none !important;
+}
+h4 {
+  font-size: 10px;
+  
 }
 
-.row {
-    height: 100px;
+h3{
+  font-size: 12px;
 }
+.row {
+  height: 100px;
+  text-overflow: ellipsis;
+}
+.topTitle {
+  width: fit-content;
+  height: fit-content;
+  padding: 0;
+  margin: 0;
+  content: auto;
+  overflow: hidden !important
+
+}
+
+.midTitle {
+  width: fit-content;
+  height: fit-content;
+  padding: 0;
+  margin: 0;
+  overflow: hidden !important
+}
+
 
 .inline {
-    display: inline-block;
-    font-family: "Roboto","Arial",sans-serif;
-    font-size: 1.4rem;
-    line-height: 2rem;
-    font-weight: 400;
-    cursor: pointer;
+  display: inline-block;
+  font-family: "Roboto","Arial",sans-serif;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  font-weight: 400;
+  cursor: pointer;
 
-}
-.grid-container {
-    height: 342.48px;
-    width: 345.25px;
 }
 
 .channelThum {
-    height: 36px;
-    width: 36px;
+  height: 36px;
+  width: 36px;
 }
+
+.card{
+background-color: rgb(34, 34, 34);
+/* width: 33%; */
+border: none;
+/* width: 12.5rem */
+}
+.cardLink{
+width: 15.5rem;
+margin: 18px;
+overflow: hidden;
+}
+
+.label{
+overflow: hidden;
+font-size: 12px;
+}
+
 .thumbnail{
-    height: 185.19px;
-    width: 392.23px;
+  /* height: 185.19px;
+  width: 392.23px; */
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 5px;
+}
+
+.remove{
+  font-size: 8px;
+  line-height: .5 !important;
+  text-decoration: none !important
 }
 
 ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:space-between;
-    overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-around;
+  overflow: hidden;
+  height: max-content;
+  width: max-content;
+  margin: 5px
+}
+.date{
+  margin-left: 8px
+}
+.channelThum{
+  border-radius: 18px;
 }
 
-
 @media (min-width: 400px) {
-    .playGround {
-      padding: 5px 20px;
-    }
+  .playGround {
+    padding: 5px 20px;
   }
-  @media (min-width: 500px) {
-    .playGround {
-      padding: 5px 11px;
-    }
+}
+@media (min-width: 500px) {
+  .playGround {
+    padding: 5px 11px;
   }
-  @media (min-width: 960px) {
-    .playGround {
-      padding: 5px 11px;
-    }
+}
+@media (min-width: 960px) {
+  .playGround {
+    padding: 5px 11px;
   }
-  @media (min-width: 1024px) {
-    .playGround {
-      padding: 5px 5px;
-    }
+}
+@media (min-width: 1024px) {
+  .playGround {
+    padding: 5px 5px;
   }
+}

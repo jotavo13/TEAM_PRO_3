@@ -116,6 +116,7 @@ function NewVideo({videoState, setVideoState, userID, searchBarState, setSearchB
 		})
 		return (
 			<div className="newvideo">
+        <span className="vidName">Select one of the videos below:</span>
 				<form onSubmit={onFinalSubmitHandler}>
 					<button className="hidden" id="confirmButton">Confirm</button>
 				</form>
@@ -124,6 +125,5 @@ function NewVideo({videoState, setVideoState, userID, searchBarState, setSearchB
 		)
 	}
 }
-		  
+
 export default NewVideo;
-		  

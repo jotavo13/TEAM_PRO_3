@@ -1,3 +1,23 @@
 .hidden {
     display: none;
 }
+#text{
+    color: white;
+}
+.selected{
+    background-color: gray;
+}
+p:hover {
+    background-color: darkslategray;
+  }
+p{
+    width: fit-content;
+    text-align: center;
+    align-self: center;
+  }
+  #listItem{
+    margin-left: 20px;
+  }
+  .vidName{
+    color: tan;
+  }

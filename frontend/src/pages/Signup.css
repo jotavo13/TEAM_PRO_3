@@ -1,0 +1,43 @@
+.signup{
+    color: white;
+}
+p{
+    color: white;
+}
+.email{
+
+}
+.password{
+
+}
+.input{
+    align-self: center;
+    
+}
+.email-submit{
+    margin-top: 15px;
+}
+.surround{
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+    justify-content: center;
+    
+}
+.signup{
+    display: flex;
+    align-content: center;
+    border: 2px solid rgb(40, 88, 192);
+    border-radius: 12px;
+    
+}
+form{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+.submit{
+    width: fit-content;
+    margin-top: 8px;
+    align-self: center
+}

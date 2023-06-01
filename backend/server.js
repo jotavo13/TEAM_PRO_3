@@ -264,6 +264,12 @@ app.delete('/:id/categories/:categoryname', async (req, res) => {
 
 
 
+app.delete("/:vidId/delete", async (req, res)=>{
+  // const vidId = await Videos.findById(req.params.vidId)
+  const video = await Videos.findByIdAndDelete(req.params.vidId);
+  res.json(video)
+})
+
 //------------Auth Routes
 app.get("/auth/signup", (req, res)=>{
   res.send("hello signup page")

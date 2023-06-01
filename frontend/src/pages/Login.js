@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import "./Login.css"
+import { NavLink } from 'react-router-dom';
 
 
 function Login({loggedInState, onSubmitHandler, onChangeHandler, usernameState, passwordState, setUsernameState, setPasswordState, setLoggedInState}) {
-    // const [usernameState, setUsernameState] = useState("");
-    // const [passwordState, setPasswordState] = useState("");
-
-    // const onChangeHandler = (e, setValue)=>{
-    //     // console.log(e.target.value);
-    //     setValue(e.target.value)
-    // };
 
     const [storedUser, setStoredUser] = useState(null);
     useEffect(()=>{
@@ -39,16 +34,20 @@ function Login({loggedInState, onSubmitHandler, onChangeHandler, usernameState, 
         )
     }else{
     return (
-        <div>
+        <div className='surround'>
+        <div className='login'>
             {/* {console.log("user", loggedinState)} */}
-            Login Here
+            
 
             <form onSubmit={onSubmitHandler}>
-                 <input type="email" placeholder="email" name="username" value={usernameState} onChange={(e)=> onChangeHandler(e, setUsernameState)}/>
-                 <input type="password" placeholder="password" name="password" value={passwordState} onChange={(e)=> onChangeHandler(e, setPasswordState)}/>
+                Login Here
+                 <input type="email form-control" placeholder="email" name="username" value={usernameState} onChange={(e)=> onChangeHandler(e, setUsernameState)} className='email input'/>
+                 <br/>
+                 <input type="password" placeholder="password" name="password" value={passwordState} onChange={(e)=> onChangeHandler(e, setPasswordState)} className='password input'/>
                 <input type="submit" value="Submit
-                "/>
+                " className='submit'/>
              </form>
+        </div>
         </div>
     );
 }

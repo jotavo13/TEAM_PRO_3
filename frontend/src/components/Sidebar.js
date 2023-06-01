@@ -3,6 +3,7 @@ import "./Sidebar.css";
 import {BsCameraVideo} from "react-icons/bs"
 import { NavLink, useNavigate } from "react-router-dom";
 import Categories from './Categories';
+import Button from "react-bootstrap/Button";
 
 function Sidebar({username, userID, videos, setVideos}) {
 
@@ -93,8 +94,8 @@ function Sidebar({username, userID, videos, setVideos}) {
         style={{width: "280px"}}
       >
         <NavLink to={`/${userID}/new`}>
-        <button><BsCameraVideo/>
-        <br/><span>Add Video</span></button>
+        <Button className="add-button"><BsCameraVideo/>
+        <br/><span >Add Video</span></Button>
         </NavLink>
 
         <div className="fs-4 categories">Categories<button onClick={categoryAddButton}>+</button></div>
@@ -109,22 +110,15 @@ function Sidebar({username, userID, videos, setVideos}) {
         <Categories categories={categories} setCategories={setCategories} userID={userID} videos={videos} setVideos={setVideos}/>
         <hr />
         <div className="dropdown">
-          <a
-            href="#"
-            className="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-            id="dropdownUser1"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
+          
             <img
-              src=""
-              alt=""
+              src="https://t3.ftcdn.net/jpg/05/71/08/24/360_F_571082432_Qq45LQGlZsuby0ZGbrd79aUTSQikgcgc.jpg"
+              alt="account icon"
               width="32"
               height="32"
               className="rounded-circle me-2"
             />
             <strong>{username}</strong>
-          </a>
           <ul
             className="dropdown-menu dropdown-menu-dark text-small shadow"
             aria-labelledby="dropdownUser1"

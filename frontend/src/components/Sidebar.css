@@ -1,6 +1,12 @@
+.sidebar{
+    background-color: rgb(34, 34, 34) !important;
+}
+hr{
+  color: gray
+}
 .sidecolumn{
     min-height: 100%;
-    margin: -25px 0 0 0;
+    margin: -10px 0 0 0;
     border: 0;
 }
 
@@ -15,4 +21,12 @@
 .hidden {
     /* visibility: hidden */
     display: none;
+}
+.add-button{
+    background-color: rgb(0, 55, 154);
+    border-radius: 8px;
+    border: none;
+}
+.add-button:hover{
+    background-color: darkslategray;
 }
