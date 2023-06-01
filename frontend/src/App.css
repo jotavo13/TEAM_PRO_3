@@ -61,3 +61,11 @@ header {
 main {
   flex: 1 0 auto;
 }
+
+button, .search {
+  background-color: rgb(107, 107, 107);
+  border: 1px solid;
+  border-color: rgb(107, 107, 107);
+  border-radius: 4px !important;
+  color: white;
+}

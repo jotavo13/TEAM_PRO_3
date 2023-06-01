@@ -27,7 +27,7 @@ function AccountInfo({loggedInState, setLoggedInState}) {
             return <button onClick={loginButton}>Login</button>
         }
         else if (!loggedInState) {
-            return(  
+            return(
             <>
             <button onClick={createAccount}>New Account</button>
             </>)

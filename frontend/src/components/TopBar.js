@@ -36,26 +36,19 @@ function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChang
   if(loggedInState){
   return (
 		<div className="navbar" data-bs-theme="dark">
-{/* if not logged in, disable home button */}
 <Navbar bg="dark" expand="sm" className="topbar">
       <Container fluid>
         <Navbar.Brand href="#">
 
 
 			<NavLink to={`/${userID}`}>
-				<img src = "https://i.imgur.com/gtsLGPG.png" style={{width:"200px", margin:"0 0 0 29px"}}/>
+				<img src = "https://i.imgur.com/gtsLGPG.png" style={{width:"142px", margin:"0 0 0 56px"}}/>
 			</NavLink>
 
 
 
 		</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
+    <div className="center">
             <NavDropdown title="Sort By" id="navbarScrollingDropdown">
               <NavDropdown.Item onClick={sortHandler} id='0'>
                 Views Lowest - Highest
@@ -70,13 +63,12 @@ function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChang
                 Date New - Old
               </NavDropdown.Item>
             </NavDropdown>
-          </Nav>
           
           <SearchBar onSearchSubmitHandler= {onSearchSubmitHandler} onChangeHandler={onChangeHandler} setSearchBarState={setSearchBarState} searchBarState={searchBarState} />
         
   
         
-        </Navbar.Collapse>
+    </div>
       </Container>
       <AccountInfo setLoggedInState={setLoggedInState} loggedInState= {loggedInState} />
     </Navbar>

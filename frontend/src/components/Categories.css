@@ -2,3 +2,46 @@
     /* visibility: hidden */
     display: none;
 }
+
+li.nav-item{
+    background-color: rgb(34, 34, 34) !important;
+    margin-top: 15px;
+    width: 225px;
+}
+
+li .nav-link{
+    background-color: rgb(0, 55, 154) !important;
+}
+
+li a.nav-link:hover{
+    background-color: rgb(17, 77, 186) !important;
+}
+
+li a.nav-link {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+li a.nav-link span {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+li a.nav-link button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    line-height: 0;
+    padding: 0 0 0 0;
+    font-size: 17px;
+}
+
+li a.nav-link button svg {
+    pointer-events: none;
+}

@@ -90,15 +90,15 @@ function Sidebar({username, userID, videos, setVideos}) {
   return (
   
       <div
-        className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark sidecolumn"
+        className="d-flex flex-column flex-shrink-0 p-3 text-white sidecolumn"
         style={{width: "280px"}}
       >
         <NavLink to={`/${userID}/new`}>
         <Button className="add-button"><BsCameraVideo/>
-        <br/><span >Add Video</span></Button>
+        <span >Add Video</span></Button>
         </NavLink>
 
-        <div className="fs-4 categories">Categories<button onClick={categoryAddButton}>+</button></div>
+        <div className="fs-4 categories">Categories<button onClick={categoryAddButton} className="categoriesbutton">+</button></div>
         <div className='hidden' id='addCategoryDiv'>				
           <form onSubmit={onSubmitHandler}>
             <input type="text" name="searchBar" value={inputBarState} placeholder="Add Category Here" onChange={(e) => onChangeHandler(e, setInputBarState)}/> 
