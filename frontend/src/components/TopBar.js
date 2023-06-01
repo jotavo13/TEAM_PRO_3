@@ -96,34 +96,6 @@ function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChang
           </NavLink>
     
 		</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
-            <NavDropdown title="Sort By" id="navbarScrollingDropdown">
-              <NavDropdown.Item onClick={sortHandler} id='0'>
-                Views Lowest - Highest
-              </NavDropdown.Item>
-              <NavDropdown.Item onClick={sortHandler} id='1'>
-                Views Highest - Lowest
-              </NavDropdown.Item>
-              <NavDropdown.Item onClick={sortHandler} id='2'>
-                Date Old - New
-              </NavDropdown.Item>
-              <NavDropdown.Item onClick={sortHandler} id='3'>
-                Date New - Old
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-          
-          <SearchBar onSearchSubmitHandler= {onSearchSubmitHandler} onChangeHandler={onChangeHandler} setSearchBarState={setSearchBarState} searchBarState={searchBarState} />
-        
-  
-        
-        </Navbar.Collapse>
       </Container>
       <AccountInfo setLoggedInState={setLoggedInState} loggedInState= {loggedInState} />
     </Navbar>

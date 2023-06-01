@@ -22,13 +22,17 @@ function AccountInfo({loggedInState, setLoggedInState}) {
             Navigate("/auth/signup")
         }
 
-        if (!loggedInState) {
-             return(  
-             <>
-             <button onClick={loginButton}>Login</button>
-             <button onClick={createAccount}>New Account</button>
-             </>)
+        if(!loggedInState && window.location.pathname.slice(window.location.pathname.length - 6) == 'signup'){
+            
+            return <button onClick={loginButton}>Login</button>
         }
+        else if (!loggedInState) {
+            return(  
+            <>
+            <button onClick={createAccount}>New Account</button>
+            </>)
+       }
+
        
         if(loggedInState){
             return(<button onClick={logout}>Logout</button>)
