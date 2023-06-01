@@ -192,7 +192,7 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
   const hideAddCategory = (e) => {
     e.preventDefault();
     console.log("this", e.target.classList);
-    const addCategory = document.getElementById(e.target.classList.value);
+    const addCategory = document.getElementById(`${e.target.classList.value}`);
     addCategory.classList.toggle("hidden");
     setCategoryState(e.target.id);
     // setNewCategoryState(e.target);
@@ -264,7 +264,7 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
 
           </a>
           <div className="hidden" id={addVideoCategory}>
-            <form onSubmit={onSubmitHandler} className={index} id='formatform'>
+            <form onSubmit={onSubmitHandler} className={addVideoCategory} id='formatform'>
               <select id="title" name="title" onChange={onChangeHandler}>
                 {videoTitles}
               </select>
