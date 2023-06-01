@@ -32,8 +32,37 @@ function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChang
       fetchVideos();  
     }
       
+  if(loggedInState && window.location.pathname.slice(window.location.pathname.length - 3) == 'new'){
+    return (
+      <div className="navbar" data-bs-theme="dark">
+      <Navbar bg="dark" expand="sm" className="topbar">
+            <Container fluid>
+              <Navbar.Brand href="#">
+      
+      
+            <NavLink to={`/${userID}`}>
+              <img src = "https://i.imgur.com/gtsLGPG.png" style={{width:"142px", margin:"0 0 0 56px"}}/>
+            </NavLink>
+      
+      
+      
+          </Navbar.Brand>
+          <div className="center">
+                
+                <SearchBar onSearchSubmitHandler= {onSearchSubmitHandler} onChangeHandler={onChangeHandler} setSearchBarState={setSearchBarState} searchBarState={searchBarState} />
+              
+        
+              
+          </div>
+            </Container>
+            <AccountInfo setLoggedInState={setLoggedInState} loggedInState= {loggedInState} />
+          </Navbar>
+          </div>
+        )
+      
+  }
   
-  if(loggedInState){
+  else if(loggedInState){
   return (
 		<div className="navbar" data-bs-theme="dark">
 <Navbar bg="dark" expand="sm" className="topbar">

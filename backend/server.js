@@ -71,11 +71,10 @@ app.get('/:id/videos/:search', async (req, res) => {
 
 app.get('/:id/sortvideos/:sort', async (req, res) => {
 
-  let sortedVideos;
   let placeholder;
   let swapCheck = true;
 
-  const videos = await Videos.find({userId: req.params.id});
+  let videos = await Videos.find({userId: req.params.id});
 
   console.log(videos[0].publishTime)
   if(req.params.sort == '0'){
@@ -122,24 +121,31 @@ app.get('/:id/sortvideos/:sort', async (req, res) => {
         day1 = videos[i].publishTime.slice(8,10);
         day2 = videos[i + 1].publishTime.slice(8,10);
 
+
         if(year1 > year2){
+            console.log('here')
             swapCheck = true;
             placeholder = videos[i];
             videos[i] = videos[i+1];
             videos[i+1] = placeholder;
         }
         else if(year2 >= year1 && month1 > month2){
+          console.log('here2')
+
           swapCheck = true;
           placeholder = videos[i];
           videos[i] = videos[i+1];
           videos[i+1] = placeholder;
         }
         else if(year2 >= year1 && month2 >= month1 && day1 > day2){
+          console.log('her3e')
+
           swapCheck = true;
           placeholder = videos[i];
           videos[i] = videos[i+1];
           videos[i+1] = placeholder;
         }
+        console.log(videos);
       }
     }
   }
