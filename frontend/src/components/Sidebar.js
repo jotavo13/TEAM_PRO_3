@@ -2,6 +2,7 @@ import { React, useEffect } from "react";
 import "./Sidebar.css";
 import {BsCameraVideo} from "react-icons/bs"
 import { NavLink } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 function Sidebar({username, userID}) {
 
@@ -15,8 +16,8 @@ function Sidebar({username, userID}) {
         style={{width: "280px"}}
       >
         <NavLink to={`/${userID}/new`}>
-        <button><BsCameraVideo/>
-        <br/><span>Add Video</span></button>
+        <Button className="add-button"><BsCameraVideo/>
+        <br/><span >Add Video</span></Button>
         </NavLink>
         <a
           href="/"
@@ -71,13 +72,7 @@ function Sidebar({username, userID}) {
         </ul>
         <hr />
         <div className="dropdown">
-          <a
-            href="#"
-            className="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-            id="dropdownUser1"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
+          
             <img
               src="https://t3.ftcdn.net/jpg/05/71/08/24/360_F_571082432_Qq45LQGlZsuby0ZGbrd79aUTSQikgcgc.jpg"
               alt="account icon"
@@ -86,7 +81,6 @@ function Sidebar({username, userID}) {
               className="rounded-circle me-2"
             />
             <strong>{username}</strong>
-          </a>
           <ul
             className="dropdown-menu dropdown-menu-dark text-small shadow"
             aria-labelledby="dropdownUser1"

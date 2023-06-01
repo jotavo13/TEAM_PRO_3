@@ -6,7 +6,7 @@ hr{
 }
 .sidecolumn{
     min-height: 100%;
-    margin: -25px 0 0 0;
+    margin: -10px 0 0 0;
     border: 0;
 }
 
@@ -16,4 +16,12 @@ hr{
 
 .categoriesList{
     margin: 0 5px 0 0;
+}
+.add-button{
+    background-color: rgb(0, 55, 154);
+    border-radius: 8px;
+    border: none;
+}
+.add-button:hover{
+    background-color: darkslategray;
 }

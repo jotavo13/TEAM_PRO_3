@@ -46,15 +46,20 @@ const onChangeHandler = (e, setValue)=>{
 
 
 return(
-    <div className="signup">
-        Create an account:
-    <form onSubmit={onSubmithandler}>
-        <input type="email" placeholder="email" name="username" value={usernameState} onChange={(e)=> onChangeHandler(e, setUsernameState)}/>
-        <input type="password" placeholder="password" name="password" value={passwordState} onChange={(e)=> onChangeHandler(e, setPasswordState)}/>
 
-        <input type="submit" value="Signup"/>
+    <div className='surround'>
+    <div className="signup">
+        
+    <form onSubmit={onSubmithandler}>
+        Create an account:
+        <input type="email-submit" placeholder="email" name="username" value={usernameState} onChange={(e)=> onChangeHandler(e, setUsernameState)} className='email input'/>
+        <input type="password" placeholder="password" name="password" value={passwordState} onChange={(e)=> onChangeHandler(e, setPasswordState)} className='password input'/>
+
+        <input type="submit" value="Signup" className='submit'/>
 
     </form>
+   
+    </div>
     </div>
 )
 }
