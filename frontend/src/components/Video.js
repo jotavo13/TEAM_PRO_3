@@ -2,7 +2,8 @@ import React from "react";
 import "./Video.css";
 import { NavLink } from "react-router-dom";
 
-function Video({ video }) {
+function Video({ video, videoState }) {
+  console.log("state function", videoState)
 
   // const timeFromEvent = console.log(video);
 

@@ -109,7 +109,7 @@ const onSearchSubmitHandler = async (event) => {
 
   event.preventDefault();
 
-  console.log(window.location.pathname.slice(window.location.pathname.length - 3))
+  // console.log(window.location.pathname.slice(window.location.pathname.length - 3))
 
   if(window.location.pathname.slice(window.location.pathname.length - 3) == 'new'){
 
@@ -128,7 +128,8 @@ const onSearchSubmitHandler = async (event) => {
   
     await setVideoState(results);
   
-    console.log(videoState.items);
+    console.log("items", videoState.items);
+    console.log("state", videoState);
   
     await setSearchBarState('');
   }
@@ -249,6 +250,7 @@ useEffect (() =>{
 
       <main>
         <TopBar onChangeHandler={onChangeHandler} onSearchSubmitHandler={onSearchSubmitHandler} setSearchBarState={setSearchBarState} loggedInState={loggedInState} setLoggedInState={setLoggedInState} userID={userID} videos={videos} setVideos={setVideos}/>
+        
         {routes}
       </main>
       
