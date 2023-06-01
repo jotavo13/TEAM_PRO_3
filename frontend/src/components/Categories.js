@@ -189,7 +189,7 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
   const hideAddCategory = (e) => {
     e.preventDefault();
     console.log("this", e.target.classList);
-    const addCategory = document.getElementById(e.target.classList);
+    const addCategory = document.getElementById(e.target.classList.value);
     addCategory.classList.toggle("hidden");
     setCategoryState(e.target.id);
     // setNewCategoryState(e.target);
