@@ -62,48 +62,68 @@ function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChang
       
   }
   
-  else if(loggedInState){
-  return (
-		<div className="navbar" data-bs-theme="dark">
-<Navbar bg="dark" expand="sm" className="topbar">
-      <Container fluid>
-        <Navbar.Brand href="#">
-
-
-			<NavLink to={`/${userID}`}>
-				<img src = "https://i.imgur.com/gtsLGPG.png" style={{width:"142px", margin:"0 0 0 56px"}}/>
-			</NavLink>
-
-
-
-		</Navbar.Brand>
-    <div className="center">
-            <NavDropdown title="Sort By" id="navbarScrollingDropdown">
-              <NavDropdown.Item onClick={sortHandler} id='0'>
-                Views Lowest - Highest
-              </NavDropdown.Item>
-              <NavDropdown.Item onClick={sortHandler} id='1'>
-                Views Highest - Lowest
-              </NavDropdown.Item>
-              <NavDropdown.Item onClick={sortHandler} id='2'>
-                Date Old - New
-              </NavDropdown.Item>
-              <NavDropdown.Item onClick={sortHandler} id='3'>
-                Date New - Old
-              </NavDropdown.Item>
-            </NavDropdown>
-          
-          <SearchBar onSearchSubmitHandler= {onSearchSubmitHandler} onChangeHandler={onChangeHandler} setSearchBarState={setSearchBarState} searchBarState={searchBarState} />
-        
+  else if(loggedInState && window.location.pathname.slice(window.location.pathname.length - 6) == 'delete'){
+    return(
+      <div className="navbar" data-bs-theme="dark">
+  {/* if not logged in, disable home button */}
+  <Navbar bg="dark" expand="sm" className="topbar">
+        <Container fluid>
+          <Navbar.Brand href="#">
   
-        
-    </div>
-      </Container>
-      <AccountInfo setLoggedInState={setLoggedInState} loggedInState= {loggedInState} />
-    </Navbar>
-		</div>
-	)}
+        <NavLink to={`/${userID}`}>
+          <img src = "https://i.imgur.com/gtsLGPG.png" style={{width:"142px", margin:"0 0 0 56px"}}/>
+        </NavLink>
+  
+  </Navbar.Brand>
+    </Container>
+    <AccountInfo setLoggedInState={setLoggedInState} loggedInState= {loggedInState} />
+  </Navbar>
+  </div>
+)
 
+  }
+  else if(loggedInState){
+    return (
+      <div className="navbar" data-bs-theme="dark">
+  <Navbar bg="dark" expand="sm" className="topbar">
+        <Container fluid>
+          <Navbar.Brand href="#">
+  
+  
+        <NavLink to={`/${userID}`}>
+          <img src = "https://i.imgur.com/gtsLGPG.png" style={{width:"142px", margin:"0 0 0 56px"}}/>
+        </NavLink>
+  
+  
+  
+      </Navbar.Brand>
+      <div className="center">
+              <NavDropdown title="Sort By" id="navbarScrollingDropdown">
+                <NavDropdown.Item onClick={sortHandler} id='0'>
+                  Views Lowest - Highest
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={sortHandler} id='1'>
+                  Views Highest - Lowest
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={sortHandler} id='2'>
+                  Date Old - New
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={sortHandler} id='3'>
+                  Date New - Old
+                </NavDropdown.Item>
+              </NavDropdown>
+            
+            <SearchBar onSearchSubmitHandler= {onSearchSubmitHandler} onChangeHandler={onChangeHandler} setSearchBarState={setSearchBarState} searchBarState={searchBarState} />
+          
+    
+          
+      </div>
+        </Container>
+        <AccountInfo setLoggedInState={setLoggedInState} loggedInState= {loggedInState} />
+      </Navbar>
+      </div>
+    )}
+  
   else{
     return(
         <div className="navbar" data-bs-theme="dark">
@@ -113,7 +133,7 @@ function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChang
             <Navbar.Brand href="#">
     
           <NavLink to={`#`}>
-            <img src = "https://i.imgur.com/c6kNr4C.png" style={{width:"200px", margin:"0 0 0 29px"}}/>
+            <img src = "https://i.imgur.com/gtsLGPG.png" style={{width:"142px", margin:"0 0 0 56px"}}/>
           </NavLink>
     
 		</Navbar.Brand>

@@ -90,3 +90,9 @@ button:hover, .search:hover, .categorybutton:hover {
   display: flex;
   gap: 10px;
 }
+
+.deletepage {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
