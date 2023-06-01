@@ -1,3 +1,33 @@
 .login{
     color: white;
 }
+p{
+    color: white;
+}
+.input{
+    align-self: center 
+}
+.surround{
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+    justify-content: center;
+}
+
+.login{
+    display: flex;
+    align-content: center;
+    border: 2px solid rgb(40, 88, 192);
+    border-radius: 12px;
+    
+}
+form{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+.submit{
+    width: fit-content;
+    margin-top: 8px;
+    align-self: center
+}

@@ -46,8 +46,9 @@ function Videos({username, userID, videoState}) {
 	else{
 		videoList = videos.map((video, index) => {
 			return (
+				<div className='videoCards'>
 				<Video key={index} video={video} />
-				
+				</div>
 			)
 		})
 	}

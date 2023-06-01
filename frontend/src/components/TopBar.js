@@ -25,7 +25,7 @@ function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChang
 
 
 			<NavLink to={`/${userID}`}>
-				<img src = "https://i.imgur.com/c6kNr4C.png" style={{width:"200px", margin:"0 0 0 29px"}}/>
+				<img src = "https://i.imgur.com/gtsLGPG.png" style={{width:"200px", margin:"0 0 0 29px"}}/>
 			</NavLink>
 
 

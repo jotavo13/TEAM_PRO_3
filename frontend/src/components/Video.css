@@ -7,7 +7,7 @@ h3, h4 {
   color: black;
   font-family: "Roboto","Arial",sans-serif;
   /* font-size: 1.6rem; */
-  line-height: 2.2rem;
+  line-height: 1.2rem;
   font-weight: 500;
   overflow: hidden;
   display: block;
@@ -21,12 +21,16 @@ h3, h4 {
   color: whitesmoke;
   font-size: 16px;
   margin-bottom: 0.5px;
+  text-decoration: none !important;
 }
 h4 {
-  font-size: 14px;
+  font-size: 10px;
   
 }
 
+h3{
+  font-size: 12px;
+}
 .row {
   height: 100px;
   text-overflow: ellipsis;
@@ -69,9 +73,10 @@ h4 {
 background-color: rgb(34, 34, 34);
 /* width: 33%; */
 border: none;
+/* width: 12.5rem */
 }
 .cardLink{
-width: 200px;
+width: 15.5rem;
 margin: 18px;
 overflow: hidden;
 }
@@ -86,17 +91,30 @@ font-size: 12px;
   width: 392.23px; */
   border-radius: 10px;
   object-fit: cover;
+  margin-bottom: 5px;
+}
+
+.remove{
+  font-size: 8px;
+  line-height: .5 !important;
+  text-decoration: none !important
 }
 
 ul {
   display: flex;
   flex-wrap: wrap;
-  justify-content:space-between;
+  justify-content:space-around;
   overflow: hidden;
   height: max-content;
   width: max-content;
+  margin: 5px
 }
-
+.date{
+  margin-left: 8px
+}
+.channelThum{
+  border-radius: 18px;
+}
 
 @media (min-width: 400px) {
   .playGround {

@@ -140,9 +140,7 @@ function NewVideo({ videoState, setVideoState, userID }) {
     const videos = videoState.items.map((video, index) => {
       return (
         <div onClick={onFinalChangeHandler} key={index} className={index}>
-          <div id="listItem">
-          <p className={index} id="text">{video.snippet.title}</p>
-          </div>
+          <h1 className={index}>{video.snippet.title}</h1>
         </div>
       );
     });
@@ -163,7 +161,6 @@ function NewVideo({ videoState, setVideoState, userID }) {
             Confirm
           </button>
         </form>
-        <span className="vidName">Select one of the videos below:</span>
         {videos}
       </div>
     );
