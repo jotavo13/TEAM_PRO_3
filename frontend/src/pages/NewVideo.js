@@ -1,129 +1,145 @@
-import { React, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
-import './NewVideo.css'
-		  
-function NewVideo({videoState, setVideoState, userID, searchBarState, setSearchBarState, onFinalSubmitHandler, finalVideoState, setFinalVideoState}) {
-	const {id} = useParams()
-	console.log(id)
-	const navigate = useNavigate();
+import { React, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import "./NewVideo.css";
 
-	// const [videoState, setVideoState] = useState('');
+function NewVideo({
+  videoState,
+  setVideoState,
+  userID,
+  searchBarState,
+  setSearchBarState,
+  onFinalSubmitHandler,
+  finalVideoState,
+  setFinalVideoState,
+}) {
+  const { id } = useParams();
+  console.log(id);
+  const navigate = useNavigate();
 
-	const onChangeHandler = (e, setValue) => {
-		setValue(e.target.value);
-	}
+  // const [videoState, setVideoState] = useState('');
 
-	const onSubmitHandler = async (event) => {
+  const onChangeHandler = (e, setValue) => {
+    setValue(e.target.value);
+  };
 
-		event.preventDefault();
+  const onSubmitHandler = async (event) => {
+    event.preventDefault();
 
-		const url = `https://youtube-v31.p.rapidapi.com/search?q=${searchBarState}&part=snippet%2Cid&regionCode=US&maxResults=10`;
-	
-		const options = {
-		  method: 'GET',
-		  headers: {
-			'X-RapidAPI-Key': 'ed2633ba42mshbfc9218461d8e0bp16bf0ajsn1ca01f4d7312',
-			'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
-		  }
-		}
-	  
-		const response = await fetch(url, options);
-		const results = await response.json();
+    const url = `https://youtube-v31.p.rapidapi.com/search?q=${searchBarState}&part=snippet%2Cid&regionCode=US&maxResults=10`;
 
-		await setVideoState(results);
+    const options = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": "ed2633ba42mshbfc9218461d8e0bp16bf0ajsn1ca01f4d7312",
+        "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
+      },
+    };
 
-		console.log(videoState.items);
-	  
-	}
+    const response = await fetch(url, options);
+    const results = await response.json();
 
-	const onFinalChangeHandler = async (event) => {
-		const confirmButton = document.getElementById('confirmButton');
-		console.log(confirmButton);
-		confirmButton.classList.toggle('hidden');
-		await setFinalVideoState(videoState.items[event.target.classList.value]);
-	}
+    await setVideoState(results);
 
-	// const onFinalSubmitHandler = async (event) => {
-	// 	event.preventDefault();
+    console.log(videoState.items);
+  };
 
-	// 	const options = {
-	// 		method: 'GET',
-	// 		headers: {
-	// 		  'X-RapidAPI-Key': 'ed2633ba42mshbfc9218461d8e0bp16bf0ajsn1ca01f4d7312',
-	// 		  'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
-	// 		}
-	// 	}  
+  const onFinalChangeHandler = async (event) => {
+    const confirmButton = document.getElementById("confirmButton");
+    console.log(confirmButton);
+    confirmButton.classList.toggle("hidden");
+    await setFinalVideoState(videoState.items[event.target.classList.value]);
+  };
 
-	// 	const url = `https://youtube-v31.p.rapidapi.com/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${finalVideoState.id.videoId}`;
-	  
-	// 	const response = await fetch(url, options);
-	// 	const videoResults = await response.json();
-	  
-	// 	const url2 = `https://youtube-v31.p.rapidapi.com/channels?part=snippet%2Cstatistics&id=${finalVideoState.snippet.channelId}`
-	  
-	// 	const response2 = await fetch(url2, options);
-	// 	const channelResults = await response2.json();
+  // const onFinalSubmitHandler = async (event) => {
+  // 	event.preventDefault();
 
-	// 	console.log(videoResults, channelResults)
+  // 	const options = {
+  // 		method: 'GET',
+  // 		headers: {
+  // 		  'X-RapidAPI-Key': 'ed2633ba42mshbfc9218461d8e0bp16bf0ajsn1ca01f4d7312',
+  // 		  'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+  // 		}
+  // 	}
 
-	// 	let videoObject = {
-	// 			title:  finalVideoState.snippet.title,
-	// 			thumbnail: videoResults.items[0].snippet.thumbnails.maxres.url,
-	// 			channelThumbnail: channelResults.items[0].snippet.thumbnails.default.url,
-	// 			channelTitle: finalVideoState.snippet.channelTitle,
-	// 			publishTime: finalVideoState.snippet.publishTime,
-	// 			views: videoResults.items[0].statistics.viewCount,
-	// 			videoURL: `https://www.youtube.com/watch?v=${finalVideoState.id.videoId}`,
-	// 			categories: []
-	// 	}
-		
-	// 	const postOption = {
-	// 		method: 'POST',
-	// 		headers: {
-	// 			"Content-Type": "application/json"
-	// 		},
-	// 		body: JSON.stringify(videoObject)
-	// 	}
+  // 	const url = `https://youtube-v31.p.rapidapi.com/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${finalVideoState.id.videoId}`;
 
-		
-		
-	// 	const responseData = await fetch(`http://localhost:4000/${id}`, postOption);
+  // 	const response = await fetch(url, options);
+  // 	const videoResults = await response.json();
 
-	// 	const newVideoObject = await responseData.json();
+  // 	const url2 = `https://youtube-v31.p.rapidapi.com/channels?part=snippet%2Cstatistics&id=${finalVideoState.snippet.channelId}`
 
-	// 	await setSearchBarState('');
+  // 	const response2 = await fetch(url2, options);
+  // 	const channelResults = await response2.json();
 
-	// 	navigate(`/${userID}`);
+  // 	console.log(videoResults, channelResults)
 
-	// }
+  // 	let videoObject = {
+  // 			title:  finalVideoState.snippet.title,
+  // 			thumbnail: videoResults.items[0].snippet.thumbnails.maxres.url,
+  // 			channelThumbnail: channelResults.items[0].snippet.thumbnails.default.url,
+  // 			channelTitle: finalVideoState.snippet.channelTitle,
+  // 			publishTime: finalVideoState.snippet.publishTime,
+  // 			views: videoResults.items[0].statistics.viewCount,
+  // 			videoURL: `https://www.youtube.com/watch?v=${finalVideoState.id.videoId}`,
+  // 			categories: []
+  // 	}
 
-	
+  // 	const postOption = {
+  // 		method: 'POST',
+  // 		headers: {
+  // 			"Content-Type": "application/json"
+  // 		},
+  // 		body: JSON.stringify(videoObject)
+  // 	}
 
-	if(videoState === ''){
-		return (
-			<div className="newvideo">
-				Search for a video!
-			</div>
-		)
-	}
-	else{
-		const videos = videoState.items.map((video, index) => {
-			return (
-				<div onClick={onFinalChangeHandler} key={index} className={index}>
-					<h1 className={index}>{video.snippet.title}</h1>
-				</div>
-			)
-		})
-		return (
-			<div className="newvideo">
+  // 	const responseData = await fetch(`http://localhost:4000/${id}`, postOption);
+
+  // 	const newVideoObject = await responseData.json();
+
+  // 	await setSearchBarState('');
+
+  // 	navigate(`/${userID}`);
+
+  // }
+
+  
+
+  if (videoState === "") {
+    return <div className="newvideo">Search for a video!</div>;
+  } else {
+    const videos = videoState.items.map((video, index) => {
+      return (
+        <div onClick={onFinalChangeHandler} key={index} className={index} style={{width: "284px" , height: "280px"}}>
+          <div className="card cardLink newcard" style={{width: "284px" , height: "280px"}}>
+			
+            <div className="video" style={{width: "284px" , height: "280px"}} >
+				
+
+              <img src={video.snippet.thumbnails.high.url}  id="thumbnail card-img-top" className={index} style={{ width:"248px", height:"140px"}} />
+
+              <h3 className={index} id="topTitle">
+                {video.snippet.title}
+              </h3>
+              <h4 className={index} id="midTitle">
+                {video.snippet.channelTitle}
+              </h4>
+            </div>
+          </div>
+        </div>
+      );
+    });
+    return (
+      <div className="newvideo">
         <span className="vidName">Select one of the videos below:</span>
-				<form onSubmit={onFinalSubmitHandler}>
-					<button className="hidden" id="confirmButton">Confirm</button>
-				</form>
-				{videos}
-			</div>
-		)
-	}
+        <form onSubmit={onFinalSubmitHandler}>
+          <button className="hidden" id="confirmButton">
+            Confirm
+          </button>
+        </form>
+       <div className="newvideosdiv"> {videos} </div> 
+      </div>
+    );
+  }
 }
 
 export default NewVideo;

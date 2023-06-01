@@ -93,7 +93,13 @@ font-size: 12px;
   object-fit: cover;
   margin-bottom: 5px;
 }
-
+#thumbnail{
+  /* height: 185.19px;
+  width: 392.23px; */
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 5px;
+}
 .remove{
   font-size: 8px;
   line-height: .5 !important;
@@ -114,25 +120,4 @@ ul {
 }
 .channelThum{
   border-radius: 18px;
-}
-
-@media (min-width: 400px) {
-  .playGround {
-    padding: 5px 20px;
-  }
-}
-@media (min-width: 500px) {
-  .playGround {
-    padding: 5px 11px;
-  }
-}
-@media (min-width: 960px) {
-  .playGround {
-    padding: 5px 11px;
-  }
-}
-@media (min-width: 1024px) {
-  .playGround {
-    padding: 5px 5px;
-  }
 }

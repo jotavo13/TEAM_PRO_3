@@ -1,6 +1,21 @@
 .hidden {
   display: none;
+
 }
+
+.selected {
+  border: 2px solid red;
+}
+/* 
+.video{
+  outline: none; 
+}
+
+.video:focus{
+  border: 10px solid red;
+} */
+
+
 #text{
   color: white;
 }
@@ -24,4 +39,11 @@ p{
 
 h1 {
   color: aliceblue;
+}
+.newvideosdiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 25px;
+
 }
