@@ -1,23 +1,27 @@
 .hidden {
-    display: none;
+  display: none;
 }
 #text{
-    color: white;
+  color: white;
 }
 .selected{
-    background-color: gray;
+  background-color: gray;
 }
 p:hover {
-    background-color: darkslategray;
-  }
+  background-color: darkslategray;
+}
 p{
-    width: fit-content;
-    text-align: center;
-    align-self: center;
-  }
-  #listItem{
-    margin-left: 20px;
-  }
-  .vidName{
-    color: tan;
-  }
+  width: fit-content;
+  text-align: center;
+  align-self: center;
+}
+#listItem{
+  margin-left: 20px;
+}
+.vidName{
+  color: tan;
+}
+
+h1 {
+  color: aliceblue;
+}

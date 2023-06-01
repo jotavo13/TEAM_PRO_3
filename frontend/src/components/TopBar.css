@@ -17,3 +17,7 @@ a{
     padding: 0 15px 0 0;
 
 }
+
+.show {
+    background-color: rgb(33, 37, 41);
+}

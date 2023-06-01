@@ -12,10 +12,14 @@ hr{
 
 .categories{
     margin: 8px 0 0 67px;
+    display: flex;
+    align-items: center;
 }
 
 .categoriesList{
     margin: 0 5px 0 0;
+    display: flex;
+    align-items: center;
 }
 
 .hidden {
@@ -29,4 +33,10 @@ hr{
 }
 .add-button:hover{
     background-color: darkslategray;
+}
+
+.nav-pills .nav-link.active {
+    background-color: rgb(33, 37, 41);
+ 
+
 }
