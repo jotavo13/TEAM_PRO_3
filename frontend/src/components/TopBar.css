@@ -29,3 +29,7 @@ a{
 .dropdown-item:hover {
     background-color: rgba(255, 255, 255, 0.25) !important;
 }
+
+.searchform {
+    margin: 0 125px 0 0;
+}

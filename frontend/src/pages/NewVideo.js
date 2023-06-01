@@ -46,7 +46,32 @@ function NewVideo({
   const onFinalChangeHandler = async (event) => {
     const confirmButton = document.getElementById("confirmButton");
     console.log(confirmButton);
-    confirmButton.classList.toggle("hidden");
+	console.log(confirmButton.classList.contains("hidden"))
+	if(confirmButton.classList.contains("hidden")){
+		confirmButton.classList.toggle("hidden");
+	}
+	else{
+
+	}
+	for(let i = 0; i < videoState.items.length; i++) {
+		let removeBorder = document.getElementById(`${i}_newcard`);
+		if(i == event.target.classList.value){
+
+		}
+		else{
+			removeBorder.classList.remove("videoborder")
+		}
+	}
+	const toggledVideo = document.getElementById(`${event.target.classList.value}_newcard`)
+	console.log(toggledVideo, toggledVideo.classList);
+	if(toggledVideo.classList.contains("videoborder")){
+		console.log('success');
+		toggledVideo.classList.remove("videoborder")
+		confirmButton.classList.toggle("hidden");
+	}
+	else{
+		toggledVideo.classList.toggle("videoborder")
+	}
     await setFinalVideoState(videoState.items[event.target.classList.value]);
   };
 
@@ -108,19 +133,20 @@ function NewVideo({
     return <div className="newvideo">Search for a video!</div>;
   } else {
     const videos = videoState.items.map((video, index) => {
+		let cardID = `${index}_newcard`
       return (
-        <div onClick={onFinalChangeHandler} key={index} className={index} style={{width: "284px" , height: "280px"}}>
-          <div className="card cardLink newcard" style={{width: "284px" , height: "280px"}}>
+        <div onClick={onFinalChangeHandler}  key={index} className={index} style={{width: "284px" , height: "200px", pointerEvents: 'none'}}>
+          <div className="card cardLink newcard" id={cardID} style={{width: "284px" , height: "200px", pointerEvents: 'none'}}>
 			
-            <div className="video" style={{width: "284px" , height: "280px"}} >
+            <div className="video" style={{width: "284px" , height: "200px", pointerEvents: 'none'}} >
 				
 
-              <img src={video.snippet.thumbnails.high.url}  id="thumbnail card-img-top" className={index} style={{ width:"248px", height:"140px"}} />
+              <img src={video.snippet.thumbnails.high.url}  id="thumbnail card-img-top" className={index} style={{ width:"248px", height:"140px", pointerEvents: 'auto'}} />
 
-              <h3 className={index} id="topTitle">
+              <h3 className={index} id="topTitle" style={{pointerEvents: 'auto'}}>
                 {video.snippet.title}
               </h3>
-              <h4 className={index} id="midTitle">
+              <h4 className={index} id="midTitle" style={{pointerEvents: 'auto'}}>
                 {video.snippet.channelTitle}
               </h4>
             </div>
@@ -131,7 +157,7 @@ function NewVideo({
     return (
       <div className="newvideo">
         <span className="vidName">Select one of the videos below:</span>
-        <form onSubmit={onFinalSubmitHandler}>
+        <form onSubmit={onFinalSubmitHandler} id="confirmform">
           <button className="hidden" id="confirmButton">
             Confirm
           </button>

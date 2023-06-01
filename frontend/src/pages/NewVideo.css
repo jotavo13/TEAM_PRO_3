@@ -1,19 +1,14 @@
 .hidden {
-  display: none;
-
+  display: none !important;
 }
 
 .selected {
   border: 2px solid red;
 }
-/* 
 .video{
-  outline: none; 
+  margin-bottom: 0;
 }
 
-.video:focus{
-  border: 10px solid red;
-} */
 
 
 #text{
@@ -46,4 +41,20 @@ h1 {
   justify-content: space-around;
   gap: 25px;
 
+}
+.videoborder{
+    border: 2px solid red;
+}
+
+#confirmButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 85px;
+}
+
+#confirmform {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
