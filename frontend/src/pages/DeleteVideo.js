@@ -26,7 +26,7 @@ function DeleteVideo({userID}) {
     }
 
     return (
-        <div style={{color: "white"}}>
+        <div className="deletepage" style={{color: "white"}}>
           Are you sure you want to delete this video? 
           <button onClick = {deleteHandler}>Confirm</button>
           <button onClick = {cancelHandler} >Cancel</button>

@@ -32,57 +32,98 @@ function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChang
       fetchVideos();  
     }
       
+  if(loggedInState && window.location.pathname.slice(window.location.pathname.length - 3) == 'new'){
+    return (
+      <div className="navbar" data-bs-theme="dark">
+      <Navbar bg="dark" expand="sm" className="topbar">
+            <Container fluid>
+              <Navbar.Brand href="#">
+      
+      
+            <NavLink to={`/${userID}`}>
+              <img src = "https://i.imgur.com/gtsLGPG.png" style={{width:"142px", margin:"0 0 0 56px"}}/>
+            </NavLink>
+      
+      
+      
+          </Navbar.Brand>
+          <div className="center">
+                
+                <SearchBar onSearchSubmitHandler= {onSearchSubmitHandler} onChangeHandler={onChangeHandler} setSearchBarState={setSearchBarState} searchBarState={searchBarState} />
+              
+        
+              
+          </div>
+            </Container>
+            <AccountInfo setLoggedInState={setLoggedInState} loggedInState= {loggedInState} />
+          </Navbar>
+          </div>
+        )
+      
+  }
   
-  if(loggedInState){
-  return (
-		<div className="navbar" data-bs-theme="dark">
-{/* if not logged in, disable home button */}
-<Navbar bg="dark" expand="sm" className="topbar">
-      <Container fluid>
-        <Navbar.Brand href="#">
+  else if(loggedInState && window.location.pathname.slice(window.location.pathname.length - 6) == 'delete'){
+    return(
+      <div className="navbar" data-bs-theme="dark">
+  {/* if not logged in, disable home button */}
+  <Navbar bg="dark" expand="sm" className="topbar">
+        <Container fluid>
+          <Navbar.Brand href="#">
+  
+        <NavLink to={`/${userID}`}>
+          <img src = "https://i.imgur.com/gtsLGPG.png" style={{width:"142px", margin:"0 0 0 56px"}}/>
+        </NavLink>
+  
+  </Navbar.Brand>
+    </Container>
+    <AccountInfo setLoggedInState={setLoggedInState} loggedInState= {loggedInState} />
+  </Navbar>
+  </div>
+)
 
-
-			<NavLink to={`/${userID}`}>
-				<img src = "https://i.imgur.com/gtsLGPG.png" style={{width:"200px", margin:"0 0 0 29px"}}/>
-			</NavLink>
-
-
-
-		</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
-            <NavDropdown title="Sort By" id="navbarScrollingDropdown">
-              <NavDropdown.Item onClick={sortHandler} id='0'>
-                Views Lowest - Highest
-              </NavDropdown.Item>
-              <NavDropdown.Item onClick={sortHandler} id='1'>
-                Views Highest - Lowest
-              </NavDropdown.Item>
-              <NavDropdown.Item onClick={sortHandler} id='2'>
-                Date Old - New
-              </NavDropdown.Item>
-              <NavDropdown.Item onClick={sortHandler} id='3'>
-                Date New - Old
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
+  }
+  else if(loggedInState){
+    return (
+      <div className="navbar" data-bs-theme="dark">
+  <Navbar bg="dark" expand="sm" className="topbar">
+        <Container fluid>
+          <Navbar.Brand href="#">
+  
+  
+        <NavLink to={`/${userID}`}>
+          <img src = "https://i.imgur.com/gtsLGPG.png" style={{width:"142px", margin:"0 0 0 56px"}}/>
+        </NavLink>
+  
+  
+  
+      </Navbar.Brand>
+      <div className="center">
+              <NavDropdown title="Sort By" id="navbarScrollingDropdown">
+                <NavDropdown.Item onClick={sortHandler} id='0'>
+                  Lowest - Highest Views
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={sortHandler} id='1'>
+                  Highest - Lowest Views
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={sortHandler} id='2'>
+                  Oldest - Newest
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={sortHandler} id='3'>
+                  Newest - Oldest
+                </NavDropdown.Item>
+              </NavDropdown>
+            
+            <SearchBar onSearchSubmitHandler= {onSearchSubmitHandler} onChangeHandler={onChangeHandler} setSearchBarState={setSearchBarState} searchBarState={searchBarState} />
           
-          <SearchBar onSearchSubmitHandler= {onSearchSubmitHandler} onChangeHandler={onChangeHandler} setSearchBarState={setSearchBarState} searchBarState={searchBarState} />
-        
+    
+          
+      </div>
+        </Container>
+        <AccountInfo setLoggedInState={setLoggedInState} loggedInState= {loggedInState} />
+      </Navbar>
+      </div>
+    )}
   
-        
-        </Navbar.Collapse>
-      </Container>
-      <AccountInfo setLoggedInState={setLoggedInState} loggedInState= {loggedInState} />
-    </Navbar>
-		</div>
-	)}
-
   else{
     return(
         <div className="navbar" data-bs-theme="dark">
@@ -92,7 +133,7 @@ function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChang
             <Navbar.Brand href="#">
     
           <NavLink to={`#`}>
-            <img src = "https://i.imgur.com/c6kNr4C.png" style={{width:"200px", margin:"0 0 0 29px"}}/>
+            <img src = "https://i.imgur.com/gtsLGPG.png" style={{width:"142px", margin:"0 0 0 56px"}}/>
           </NavLink>
     
 		</Navbar.Brand>

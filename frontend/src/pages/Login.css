@@ -24,7 +24,9 @@ p{
 form{
     display: flex;
     flex-direction: column;
-    padding: 15px;
+    gap: 12px;
+    /* justify-content: space-evenly; */
+    /* padding: 15px; */
 }
 .submit{
     width: fit-content;

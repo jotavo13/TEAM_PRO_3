@@ -71,7 +71,6 @@ app.get('/:id/videos/:search', async (req, res) => {
 
 app.get('/:id/sortvideos/:sort', async (req, res) => {
 
-  let sortedVideos;
   let placeholder;
   let swapCheck = true;
 
@@ -121,6 +120,10 @@ app.get('/:id/sortvideos/:sort', async (req, res) => {
         month2 = videos[i + 1].publishTime.slice(5,7);
         day1 = videos[i].publishTime.slice(8,10);
         day2 = videos[i + 1].publishTime.slice(8,10);
+        hour1 = videos[i].publishTime.slice(11,13);
+        hour2 = videos[i + 1].publishTime.slice(11,13);
+
+        console.log(year1, year2, month1, month2, day1, day2)
 
         if(year1 > year2){
             swapCheck = true;
@@ -128,13 +131,19 @@ app.get('/:id/sortvideos/:sort', async (req, res) => {
             videos[i] = videos[i+1];
             videos[i+1] = placeholder;
         }
-        else if(year2 >= year1 && month1 > month2){
+        else if(year2 == year1 && month1 > month2){
           swapCheck = true;
           placeholder = videos[i];
           videos[i] = videos[i+1];
           videos[i+1] = placeholder;
         }
-        else if(year2 >= year1 && month2 >= month1 && day1 > day2){
+        else if(year2 == year1 && month2 == month1 && day1 > day2){
+          swapCheck = true;
+          placeholder = videos[i];
+          videos[i] = videos[i+1];
+          videos[i+1] = placeholder;
+        }
+        else if(year2 == year1 && month2 == month1 && day2 == day1 && hour1 > hour2){
           swapCheck = true;
           placeholder = videos[i];
           videos[i] = videos[i+1];
@@ -160,6 +169,8 @@ app.get('/:id/sortvideos/:sort', async (req, res) => {
         month2 = videos[i + 1].publishTime.slice(5,7);
         day1 = videos[i].publishTime.slice(8,10);
         day2 = videos[i + 1].publishTime.slice(8,10);
+        hour1 = videos[i].publishTime.slice(11,13);
+        hour2 = videos[i + 1].publishTime.slice(11,13);
 
         if(year1 < year2){
             swapCheck = true;
@@ -167,13 +178,19 @@ app.get('/:id/sortvideos/:sort', async (req, res) => {
             videos[i] = videos[i+1];
             videos[i+1] = placeholder;
         }
-        else if(year2 <= year1 && month1 < month2){
+        else if(year2 == year1 && month1 < month2){
           swapCheck = true;
           placeholder = videos[i];
           videos[i] = videos[i+1];
           videos[i+1] = placeholder;
         }
-        else if(year2 <= year1 && month2 <= month1 && day1 < day2){
+        else if(year2 == year1 && month2 == month1 && day1 < day2){
+          swapCheck = true;
+          placeholder = videos[i];
+          videos[i] = videos[i+1];
+          videos[i+1] = placeholder;
+        }
+        else if(year2 == year1 && month2 == month1 && day2 == day1 && hour1 < hour2){
           swapCheck = true;
           placeholder = videos[i];
           videos[i] = videos[i+1];

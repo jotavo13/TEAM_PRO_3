@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Categories.css";
+import {BsPencil} from "react-icons/bs"
+import {BsTrash3} from "react-icons/bs"
+
 
 function Categories({ categories, setCategories, userID, videos, setVideos }) {
   const { id } = useParams();
@@ -189,7 +192,7 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
   const hideAddCategory = (e) => {
     e.preventDefault();
     console.log("this", e.target.classList);
-    const addCategory = document.getElementById(e.target.classList.value);
+    const addCategory = document.getElementById(`${e.target.classList.value}`);
     addCategory.classList.toggle("hidden");
     setCategoryState(e.target.id);
     // setNewCategoryState(e.target);
@@ -199,7 +202,7 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
 
   const hideEditCategory = (e) => {
 	e.preventDefault();
-    console.log("this", e.target.classList);
+    console.log("this", e.target);
     const addCategory = document.getElementById(`${e.target.classList}_category`);
     addCategory.classList.toggle("hidden");
 	setCategoryUpdateState(e.target.id);
@@ -228,14 +231,16 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
     categoriesList = categories.map((category, index) => {
       
 	let updateCategory = `${index}_category`
+	let addVideoCategory = `${index}_add`
 		
 	return (
         <li className="nav-item">
           <a onClick={onCategoryClickHandler} className="nav-link active" aria-current="page" id={category.name}>
-            <svg className="bi me-2" width="16" height="16" id={category.name}></svg>
-            {category.name}
+            <span>
+				{category.name}
+			</span>
             <button
-              className={index}
+              className={addVideoCategory}
               onClick={hideAddCategory}
 			  id={category.name}
             >
@@ -246,31 +251,31 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
               onClick={hideEditCategory}
 			  id={category.name}
             >
-              Edit
+              <BsPencil className={index}/>
             </button>
 			<button
               className={index}
               onClick={onDeleteSubmitHandler}
 			  id={category.name}
             >
-              Delete
+              <BsTrash3 />
             </button>
 
 
           </a>
-          <div className="hidden" id={index}>
-            <form onSubmit={onSubmitHandler} className={index}>
+          <div className="hidden" id={addVideoCategory}>
+            <form onSubmit={onSubmitHandler} className={addVideoCategory} id='formatform'>
               <select id="title" name="title" onChange={onChangeHandler}>
                 {videoTitles}
               </select>
-              <input type="submit" value="Add" />
+              <input className='categorybutton' type="submit" value="Add" />
               {/* <button onClick={hideCreateCategories}>Cancel</button> */}
             </form>
           </div>
 		  <div className="hidden" id={updateCategory} >
-		  		<form onSubmit={onCategoryUpdateSubmitHandler} className={updateCategory}>
+		  		<form onSubmit={onCategoryUpdateSubmitHandler} className={updateCategory} id='formatform'>
 					<input type="text" name="categoryUpdate" value={categoryUpdateState} onChange={(e) => onCategoryUpdateChangeHandler(e)}/> 
-					<input type="submit" value="Update" />
+					<input className='categorybutton' type="submit" value="Confirm" />
 				</form>
           </div>
         </li>
@@ -281,10 +286,11 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
   return (
     <ul className="nav nav-pills flex-column mb-auto categoriesList">
 		{/* id={category.name} (removed from a and svg elements) */}
-		<a onClick={onCategoryClickHandler} className="nav-link active" aria-current="page" >
-            <svg className="bi me-2" width="16" height="16" ></svg>
-			None
-        </a>
+		<li className="nav-item">
+			<a onClick={onCategoryClickHandler} className="nav-link active" aria-current="page" >
+				None
+			</a>
+		</li>
       	{categoriesList}
     </ul>
   );

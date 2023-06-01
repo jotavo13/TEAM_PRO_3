@@ -1,4 +1,4 @@
-.sidebar{
+.sidecolumn{
     background-color: rgb(34, 34, 34) !important;
 }
 hr{
@@ -6,16 +6,25 @@ hr{
 }
 .sidecolumn{
     min-height: 100%;
-    margin: -10px 0 0 0;
+    margin: 10px 0 0 0;
     border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .categories{
-    margin: 8px 0 0 67px;
+    margin: 30px 0 0 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
 }
 
 .categoriesList{
-    margin: 0 5px 0 0;
+    margin: -20px 0 0 0;
+    display: flex;
+    align-items: center;
 }
 
 .hidden {
@@ -26,7 +35,29 @@ hr{
     background-color: rgb(0, 55, 154);
     border-radius: 8px;
     border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }
+
+.add-button span, a{
+    text-decoration: none !important;
+}
+
 .add-button:hover{
-    background-color: darkslategray;
+    background-color: rgb(17, 77, 186);
+}
+
+.categoriesbutton{
+    width: 25px;
+    height: 25px;
+    line-height: 0;
+    padding: 0 0 4px 0;
+}
+
+.nav-pills .nav-link.active {
+    background-color: rgb(33, 37, 41);
+ 
+
 }

@@ -90,20 +90,20 @@ function Sidebar({username, userID, videos, setVideos}) {
   return (
   
       <div
-        className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark sidecolumn"
+        className="d-flex flex-column flex-shrink-0 p-3 text-white sidecolumn"
         style={{width: "280px"}}
       >
         <NavLink to={`/${userID}/new`}>
         <Button className="add-button"><BsCameraVideo/>
-        <br/><span >Add Video</span></Button>
+        <span >Add Video</span></Button>
         </NavLink>
 
-        <div className="fs-4 categories">Categories<button onClick={categoryAddButton}>+</button></div>
+        <div className="fs-4 categories">Categories<button onClick={categoryAddButton} className="categoriesbutton">+</button></div>
         <div className='hidden' id='addCategoryDiv'>				
-          <form onSubmit={onSubmitHandler}>
-            <input type="text" name="searchBar" value={inputBarState} placeholder="Add Category Here" onChange={(e) => onChangeHandler(e, setInputBarState)}/> 
-            <input type="submit" value="Create" />
-            <button onClick={hideCreateCategories}>Cancel</button>
+          <form className='newcategoryform' onSubmit={onSubmitHandler}>
+            <input className='inputbar' type="text" name="searchBar" value={inputBarState} placeholder="Add Category Here" onChange={(e) => onChangeHandler(e, setInputBarState)}/> 
+            <input className='categorybutton' type="submit" value="Create" />
+            <button className='categorybutton' onClick={hideCreateCategories}>Cancel</button>
 				  </form>
         </div>
         <hr />
@@ -119,34 +119,6 @@ function Sidebar({username, userID, videos, setVideos}) {
               className="rounded-circle me-2"
             />
             <strong>{username}</strong>
-          <ul
-            className="dropdown-menu dropdown-menu-dark text-small shadow"
-            aria-labelledby="dropdownUser1"
-          >
-            <li>
-              <a className="dropdown-item" href="#">
-                New project...
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Settings
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Profile
-              </a>
-            </li>
-            <li>
-              <hr className="dropdown-divider" />
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Sign out
-              </a>
-            </li>
-          </ul>
         </div>
       </div>
   );

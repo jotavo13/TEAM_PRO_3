@@ -1,28 +1,64 @@
 .hidden {
-    display: none;
+  display: none !important;
 }
+
+.hidden2 {
+    visibility: hidden;
+}
+
+.selected {
+  border: 2px solid red;
+}
+.video{
+  margin-bottom: 0;
+}
+
 #text{
-    color: white;
+  color: white;
 }
 .selected{
-    background-color: gray;
+  background-color: gray;
 }
 p:hover {
-    background-color: darkslategray;
-  }
+  background-color: darkslategray;
+}
 p{
-    width: fit-content;
-    text-align: center;
-    align-self: center;
+  width: fit-content;
+  text-align: center;
+  align-self: center;
+}
+#listItem{
+  margin-left: 20px;
+}
+.vidName{
+  color: tan;
+}
 
-  }
-  #listItem{
-    margin-left: 20px;
-  }
-  .vidName{
-    color: tan;
-  }
+h1 {
+  color: aliceblue;
+}
+.newvideosdiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0px 50px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 80vh;
+}
+.videoborder{
+    border: 2px solid red;
+}
 
-.confirm{
-  width: fit-content
+#confirmButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 85px;
+}
+
+#confirmform {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

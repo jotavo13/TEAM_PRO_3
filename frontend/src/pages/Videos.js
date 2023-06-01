@@ -45,7 +45,9 @@ function Videos({username, userID, videos, setVideos}) {
     return (
 		<div className="videos">
 			<Sidebar username={username} userID={userID} videos={videos} setVideos={setVideos}/>
-			<ul>{videoList}</ul>
+			<div className="videosection">
+				<ul>{videoList}</ul>
+			</div>
 			
 		</div>
 	)

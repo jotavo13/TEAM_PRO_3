@@ -9,8 +9,8 @@ function SearchBar({onChangeHandler, onSearchSubmitHandler, setSearchBarState, s
     return (
 		<div className='surround'>
 		<div className="searchbar">
-			<form onSubmit={onSearchSubmitHandler}>
-					<input type="text" name="searchBar" value={searchBarState} placeholder="Search" onChange={(e) => onChangeHandler(e, setSearchBarState)} className='search'/> 
+			<form onSubmit={onSearchSubmitHandler} className="searchform">
+					<input type="text" name="searchBar" value={searchBarState} placeholder="Search" onChange={(e) => onChangeHandler(e, setSearchBarState)}/> 
 					<input type="submit" value="Search" className='search'/>
 				</form>
 		</div>

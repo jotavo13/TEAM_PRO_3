@@ -42,7 +42,6 @@ function Login({loggedInState, onSubmitHandler, onChangeHandler, usernameState, 
             <form onSubmit={onSubmitHandler}>
                 Login Here
                  <input type="email form-control" placeholder="email" name="username" value={usernameState} onChange={(e)=> onChangeHandler(e, setUsernameState)} className='email input'/>
-                 <br/>
                  <input type="password" placeholder="password" name="password" value={passwordState} onChange={(e)=> onChangeHandler(e, setPasswordState)} className='password input'/>
                 <input type="submit" value="Submit
                 " className='submit'/>

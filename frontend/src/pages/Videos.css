@@ -1,9 +1,25 @@
 .videos{
-    height: 100vh;
+    height: 86vh;
     margin: 0;
     padding: 0;  
     display: flex;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.videos ul {
+    display: flex;
+    /* overflow-x: hidden;
+    overflow-y: auto; */
+
 }
 .videoCards{
     display: flex;
+    /* overflow-x: hidden;
+    overflow-y: auto; */
+
+}
+.videos .videosection {
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
