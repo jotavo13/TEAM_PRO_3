@@ -100,16 +100,16 @@ function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChang
       <div className="center">
               <NavDropdown title="Sort By" id="navbarScrollingDropdown">
                 <NavDropdown.Item onClick={sortHandler} id='0'>
-                  Views Lowest - Highest
+                  Lowest - Highest Views
                 </NavDropdown.Item>
                 <NavDropdown.Item onClick={sortHandler} id='1'>
-                  Views Highest - Lowest
+                  Highest - Lowest Views
                 </NavDropdown.Item>
                 <NavDropdown.Item onClick={sortHandler} id='2'>
-                  Date Old - New
+                  Oldest - Newest
                 </NavDropdown.Item>
                 <NavDropdown.Item onClick={sortHandler} id='3'>
-                  Date New - Old
+                  Newest - Oldest
                 </NavDropdown.Item>
               </NavDropdown>
             
