@@ -134,7 +134,7 @@ const onSearchSubmitHandler = async (event) => {
   }
   else{
 
-    const url = `http://localhost:4000/${userID}/videos/${searchBarState}`;
+    const url = `https://teampro3-back.onrender.com/${userID}/videos/${searchBarState}`;
       
     const response = await fetch(url);
     const results = await response.json();
@@ -192,7 +192,7 @@ const onFinalSubmitHandler = async (event) => {
 
   
   
-  const responseData = await fetch(`http://localhost:4000/${userID}`, postOption);
+  const responseData = await fetch(`https://teampro3-back.onrender.com/${userID}`, postOption);
 
   const newVideoObject = await responseData.json();
 
