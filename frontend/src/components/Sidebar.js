@@ -12,7 +12,7 @@ function Sidebar({username, userID, videos, setVideos}) {
   const [inputBarState, setInputBarState] = useState('');
   const [categories, setCategories] = useState(null);
 
-	const URL = `http://localhost:4000/${userID}/categories`;
+	const URL = `https://teampro3-back.onrender.com/${userID}/categories`;
 
 	useEffect(() => {
 		const fetchCategories = async () => {
@@ -57,13 +57,13 @@ function Sidebar({username, userID, videos, setVideos}) {
     body: JSON.stringify(newCategory)
   }
 
-    const responseData = await fetch(`http://localhost:4000/${userID}/categories`, postOption);
+    const responseData = await fetch(`https://teampro3-back.onrender.com/${userID}/categories`, postOption);
 
     const newCategoryObject = await responseData.json();
 
 		const fetchCategories = async () => {
 			try{
-				let responseData = await fetch(`http://localhost:4000/${userID}/categories`);
+				let responseData = await fetch(`https://teampro3-back.onrender.com/${userID}/categories`);
 				let allCategories = await responseData.json();
 				// console.log(allVideos);
 				await setCategories(allCategories);

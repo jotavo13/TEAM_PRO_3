@@ -21,7 +21,7 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
   }
 
   useEffect(() => {
-    const URL = `http://localhost:4000/${userID}/categories`;
+    const URL = `https://teampro3-back.onrender.com/${userID}/categories`;
 
     const fetchCategories = async () => {
       try {
@@ -57,7 +57,7 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
     };
 
     const responseData = await fetch(
-      `http://localhost:4000/${id}/categories/${newCategoryState}`,
+      `https://teampro3-back.onrender.com/${id}/categories/${newCategoryState}`,
       postOption
     );
 
@@ -87,7 +87,7 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
 	};
 
 	const responseData = await fetch(
-	`http://localhost:4000/${id}/categories/${categoryState}/edit`,
+	`https://teampro3-back.onrender.com/${id}/categories/${categoryState}/edit`,
 	postOption
 	);
 
@@ -99,7 +99,7 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
 
 	const fetchCategories = async () => {
 		try{
-			let responseData = await fetch(`http://localhost:4000/${userID}/categories`);
+			let responseData = await fetch(`https://teampro3-back.onrender.com/${userID}/categories`);
 			let allCategories = await responseData.json();
 			// console.log(allVideos);
 			await setCategories(allCategories);
@@ -117,7 +117,7 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
   const onDeleteSubmitHandler = async (e) => {
 	e.preventDefault();
 
-	const url = `http://localhost:4000/${id}/categories/${e.target.id}`;
+	const url = `https://teampro3-back.onrender.com/${id}/categories/${e.target.id}`;
 
 	let categoryDelete = {
 		name: e.target.id,
@@ -141,7 +141,7 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
 
 	const fetchCategories = async () => {
 		try {
-		  let responseData = await fetch(`http://localhost:4000/${id}/categories`);
+		  let responseData = await fetch(`https://teampro3-back.onrender.com/${id}/categories`);
 		  let newCategories = await responseData.json();
 		  await setCategories(newCategories);
 		} catch (err) {
@@ -157,7 +157,7 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
 	if(event.target.tagName != 'BUTTON'){
 		console.log(event.target.id);
 		if(event.target.id != ''){
-			const url = `http://localhost:4000/${id}/categories/${event.target.id}`;
+			const url = `https://teampro3-back.onrender.com/${id}/categories/${event.target.id}`;
 		
 			const fetchCategories = async () => {
 			  try {
@@ -172,7 +172,7 @@ function Categories({ categories, setCategories, userID, videos, setVideos }) {
 
 		}
 		else{
-			const url = `http://localhost:4000/${id}`;
+			const url = `https://teampro3-back.onrender.com/${id}`;
 		
 			const fetchCategories = async () => {
 			  try {

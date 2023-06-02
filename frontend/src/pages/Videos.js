@@ -9,7 +9,7 @@ function Videos({username, userID, videos, setVideos}) {
 	const {id} = useParams();
 	console.log("id",id)
 
-	const URL = `http://localhost:4000/${id}`;
+	const URL = `https://teampro3-back.onrender.com/${id}`;
 
 	useEffect(() => {
 		const fetchVideos = async () => {

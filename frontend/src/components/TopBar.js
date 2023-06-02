@@ -17,7 +17,7 @@ function TopBar({setLoggedInState, loggedInState, onSearchSubmitHandler, onChang
     const sortHandler = async (e) => {
       e.preventDefault();
       console.log(e.target.id);
-      let URL = `http://localhost:4000/${userID}/sortvideos/${e.target.id}`
+      let URL = `https://teampro3-back.onrender.com/${userID}/sortvideos/${e.target.id}`
       const fetchVideos = async () => {
         try{
           let responseData = await fetch(URL);

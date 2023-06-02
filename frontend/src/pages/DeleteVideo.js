@@ -5,7 +5,7 @@ import { redirect, useNavigate, useParams } from 'react-router-dom';
 
 function DeleteVideo({userID}) {
 
-    const URL = 'http://localhost:4000'   
+    const URL = 'https://teampro3-back.onrender.com'   
     const vidId = useParams();
     console.log(vidId);
     const navigate = useNavigate();

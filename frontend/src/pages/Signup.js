@@ -31,7 +31,7 @@ function NewUser() {
 			body: JSON.stringify(newUser)
 		}       
 
-        const responseData = await fetch("http://localhost:4000/auth/signup", options)
+        const responseData = await fetch("https://teampro3-back.onrender.com/auth/signup", options)
 
         navigate('/auth/login');
 

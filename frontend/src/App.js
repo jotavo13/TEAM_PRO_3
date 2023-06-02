@@ -66,7 +66,7 @@ const onSubmitHandler = async (e) => {
   },
     body: JSON.stringify(userAttempt)
   }   
-  const responseData = await fetch("http://localhost:4000/auth/login", options)
+  const responseData = await fetch("https://teampro3-back.onrender.com/auth/login", options)
   const localStoredUser = localStorage.getItem('user');
   
   let loggedInUser;
